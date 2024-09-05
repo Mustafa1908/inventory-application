@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Videogame Category</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    <form action="/create_videogame" method="POST">
+      <label for="videogameName">Videogame Name: </label>
+      <input type="text" name="videogameName" id="videogameName" required />
+      <label for="videogameDescription">Videogame Description: </label>
+      <input
+        type="text"
+        name="videogameDescription"
+        id="videogameDescription"
+        required
+      />
+      <label for="videogamePublisher">Videogame Publisher: </label>
+      <input
+        type="text"
+        name="videogamePublisher"
+        id="videogamePublisher"
+        required
+      />
+      <label for="videogamePrice">Videogame Price: </label>
+      <input type="number" name="videogamePrice" id="videogamePrice" required />
+      <label for="videogameRating">Videogame Rating: </label>
+      <input
+        type="number"
+        step="any"
+        min="0"
+        max="5"
+        name="videogameRating"
+        id="videogameRating"
+        required
+      />
+      <br />
+      <label for="videogameReleaseDate">Videogame Release Date: </label>
+      <input
+        type="date"
+        name="videogameReleaseDate"
+        id="videogameReleaseDate"
+        required
+      />
+
+      <fieldset>
+        <legend>Choose your videogames genres:</legend>
+        <% if (videogameCategories) {%> <% for (let i = 0; i <
+        videogameCategories.length; i++) { %>
+        <div>
+          <label for="scales"
+            ><%= videogameCategories[i].videogame_categorie_name %></label
+          >
+          <input
+            type="checkbox"
+            id="scales"
+            name="videogameGenre"
+            value="<%= videogameCategories[i].videogame_categorie_name %>"
+          />
+        </div>
+        <% } %> <% } %>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
