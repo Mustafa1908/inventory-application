@@ -3,7 +3,7 @@ const videogameController = require("../controllers/videogameController");
 const router = express.Router();
 
 router.get("/", videogameController.getAllVideogamesGet);
-router.get("/:id");
+router.get("/:id", videogameController.getVideogameGet);
 router.post("/:id");
 router.post("/updata");
 router.post("//delete");
