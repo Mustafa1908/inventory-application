@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Videogames</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    <p>here are the videogames:</p>
+    <% if (videogameInformation) {%> <% for (let i = 0; i <
+    videogameInformation.length; i++) { %>
+    <div>
+      <span> <%= videogameInformation[i].videogame_name %> </span>
+      <span> <%= videogameInformation[i].videogame_description %> </span>
+      <span> <%= videogameInformation[i].videogame_price %> </span>
+      <span> <%= videogameInformation[i].videogame_release_date %> </span>
+      <span> <%= videogameInformation[i].videogame_rating %> </span>
+      <span> <%= videogameInformation[i].publisher %> </span>
+      <span> <%= videogameInformation[i].videogame_genre %> </span>
+    </div>
+    <% } %> <% } %>
+  </body>
+</html>
