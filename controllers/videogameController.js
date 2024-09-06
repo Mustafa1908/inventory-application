@@ -1,4 +1,5 @@
 const db = require("../db/queries");
+const splitStringInArray = require("../utils/splitStrinIntoArray");
 
 async function getAllVideogamesGet(req, res) {
   let allVideogamesGenresPublishers =
@@ -12,6 +13,11 @@ async function getVideogameGet(req, res) {
   let videogameGenrePublisher = await db.getVideogameGenrePublisher(
     req.params.id
   );
+  let videogameGenre = splitStringInArray.splitStringIntoArray(
+    videogameGenrePublisher[0].videogame_genre
+  );
+  videogameGenrePublisher[0].videoGameGenreArray = videogameGenre;
+
   res.render("view_videogame", {
     videogameInformation: videogameGenrePublisher,
   });
