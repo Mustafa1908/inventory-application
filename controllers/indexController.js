@@ -19,6 +19,8 @@ async function createVideoGamePost(req, res) {
     req.body.videogamePrice,
     req.body.videogameReleaseDate,
     req.body.videogameRating,
+    req.body.videogameQuantity,
+    req.body.videogameImage,
   ];
 
   await db.insertNewVideogame(newVideogame);
