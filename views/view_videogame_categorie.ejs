@@ -8,6 +8,7 @@
   </head>
   <body>
     <%- include('navbar'); -%>
+    <button>Update</button>
     <div>
       <span><%- videogameGenreInformation[0].videogame_categorie_name -%> </span>
     </div>
@@ -18,7 +19,7 @@
       <% if (videogameGenreList) {%> <% for (let i = 0; i <
         videogameGenreList.length; i++) { %>
         <div class="videogameContainer">
-          
+          <span><%= videogameGenreList[i].videogame_name %></span>
           <img src="<%= videogameGenreList[i].videogame_image %>" class="img" alt="">
         </div>
         <% } %> <% } %>
