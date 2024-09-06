@@ -35,7 +35,7 @@ async function getAllVideogamesCategoriesAndDescriptions() {
 
 async function getAllVideogamesCategories() {
   const { rows } = await pool.query(
-    "SELECT videogame_categorie_name FROM videogame_categorie"
+    "SELECT videogame_categorie_name, videogame_categorie_image FROM videogame_categorie"
   );
   return rows;
 }
@@ -77,8 +77,12 @@ async function insertNewVideogamePublisher(videogamePublisher) {
 
 async function insertNewVideogameCategorie(newVideogameCategorie) {
   await pool.query(
-    "INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description) VALUES ($1, $2)",
-    [newVideogameCategorie[0], newVideogameCategorie[1]]
+    "INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) VALUES ($1, $2, $3)",
+    [
+      newVideogameCategorie[0],
+      newVideogameCategorie[1],
+      newVideogameCategorie[2],
+    ]
   );
 }
 
