@@ -39,6 +39,7 @@ async function createVideoGameCategoriePost(req, res) {
   let newVideogameCategorie = [
     req.body.videogameCategorie,
     req.body.videogameCategorieDescription,
+    req.body.videogameCategorieImage,
   ];
   await db.insertNewVideogameCategorie(newVideogameCategorie);
   res.redirect("/videogame_categorie");
