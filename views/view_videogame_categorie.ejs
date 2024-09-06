@@ -18,10 +18,15 @@
     <div>
       <% if (videogameGenreList) {%> <% for (let i = 0; i <
         videogameGenreList.length; i++) { %>
+          <a
+          href="/videogame/<%= videogameGenreList[i].videogame_name %>"
+          class="openMessageLink"
+          >>
         <div class="videogameContainer">
           <span><%= videogameGenreList[i].videogame_name %></span>
           <img src="<%= videogameGenreList[i].videogame_image %>" class="img" alt="">
         </div>
+        </a>
         <% } %> <% } %>
     </div>
     </header>

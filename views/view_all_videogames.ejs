@@ -12,18 +12,19 @@
     <header class="header">
       <% if (videogameInformation) {%> <% for (let i = 0; i <
       videogameInformation.length; i++) { %>
-      <div class="videogameContainer">
-        <a
-          href="/videogame/<%= videogameInformation[i].videogame_name %>"
-          class="openMessageLink"
-          ><%= videogameInformation[i].videogame_name %></a
-        >
-        <img
-          src="<%= videogameInformation[i].videogame_image %>"
-          class="img"
-          alt=""
-        />
-      </div>
+      <a
+        href="/videogame/<%= videogameInformation[i].videogame_name %>"
+        class="openMessageLink"
+        ><%= videogameInformation[i].videogame_name %>>
+        <div class="videogameContainer">
+          >
+          <img
+            src="<%= videogameInformation[i].videogame_image %>"
+            class="img"
+            alt=""
+          />
+        </div>
+      </a>
       <% } %> <% } %>
     </header>
   </body>
