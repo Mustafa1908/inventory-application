@@ -3,19 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/view_all_videogames_categories.css" />
     <title>Videogame Category</title>
   </head>
   <body>
     <%- include('navbar'); -%>
     <p>Video game category</p>
-    <% if (videogameCategories) {%> <% for (let i = 0; i <
-    videogameCategories.length; i++) { %>
-    <div>
-      <span> <%= videogameCategories[i].videogame_categorie_name %> </span>
-      <span>
-        <%= videogameCategories[i].videogame_categorie_description %>
-      </span>
-    </div>
-    <% } %> <% } %>
+    <header class="header">
+      <% if (videogameCategories) {%> <% for (let i = 0; i <
+      videogameCategories.length; i++) { %>
+      <div>
+        <a
+          href="/videogame_categorie/<%= videogameCategories[i].videogame_categorie_name %>"
+          class="openMessageLink"
+          ><%= videogameCategories[i].videogame_categorie_name %></a
+        >
+      </div>
+      <% } %> <% } %>
+    </header>
   </body>
 </html>
