@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/view_all_videogames_categories.css" />
+    <title>Videogame Category</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    <div>
+      <span><%- videogameGenreInformation[0].videogame_categorie_name -%> </span>
+    </div>
+    <div>
+      <span><%- videogameGenreInformation[0].videogame_categorie_description -%></span>
+    </div>
+    <div>
+      <% if (videogameGenreList) {%> <% for (let i = 0; i <
+        videogameGenreList.length; i++) { %>
+        <div class="videogameContainer">
+          <a
+            href="/videogame/<%= videogameGenreList[i].videogame_name %>"
+            ><%= videogameGenreList[i].videogame_name %></a
+          >
+        </div>
+        <% } %> <% } %>
+    </div>
+    </header>
+  </body>
+</html>
