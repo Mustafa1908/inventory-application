@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/view_videogame.css" />
     <title>Document</title>
   </head>
   <body>
@@ -21,12 +22,20 @@
         </div>
         <% } %>
       </div>
+      <img
+        src="<%= videogameInformation[0].videogame_image %>"
+        class="img"
+        alt=""
+      /><br />
       <span><%= videogameInformation[0].videogame_name %></span>
       <span><%= videogameInformation[0].videogame_description %></span>
       <span><%= videogameInformation[0].publisher %></span>
       <span><%= videogameInformation[0].videogame_price %></span>
       <span><%= videogameInformation[0].videogame_release_date %></span>
       <span><%= videogameInformation[0].videogame_rating %></span>
+      <p>
+        Video game quantity: <%= videogameInformation[0].videogame_quantity %>
+      </p>
     </div>
     <% } %>
   </body>
