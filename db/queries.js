@@ -14,6 +14,20 @@ async function getAllVideogamesGenresPublishers() {
   return rows;
 }
 
+async function getVideogameCategorieDescription(videogameCategorie) {
+  const { rows } = await pool.query(
+    `SELECT videogame_categorie_name, videogame_categorie_description FROM videogame_categorie WHERE videogame_categorie_name = '${videogameCategorie}'`
+  );
+  return rows;
+}
+
+async function getAllVideogamesWithSpecificGenre(videogameGenre) {
+  const { rows } = await pool.query(
+    `SELECT  videogame_name,  STRING_AGG(videogame_categorie_name, ' ' ORDER BY videogame_categorie_name DESC) AS videogame_genre FROM videogame JOIN videogame_genre ON videogame.id = videogame_genre.id  WHERE videogame_categorie_name = '${videogameGenre}' GROUP BY videogame.id, videogame_genre.id;`
+  );
+  return rows;
+}
+
 async function getAllVideogamesCategoriesAndDescriptions() {
   const { rows } = await pool.query("SELECT * FROM videogame_categorie");
   return rows;
@@ -71,6 +85,8 @@ async function insertNewVideogameCategorie(newVideogameCategorie) {
 module.exports = {
   getVideogameGenrePublisher,
   getAllVideogamesGenresPublishers,
+  getVideogameCategorieDescription,
+  getAllVideogamesWithSpecificGenre,
   getAllVideogamesCategoriesAndDescriptions,
   getAllVideogamesCategories,
   getCurrentVideogameId,
