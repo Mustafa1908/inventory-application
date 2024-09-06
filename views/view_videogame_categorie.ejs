@@ -18,10 +18,8 @@
       <% if (videogameGenreList) {%> <% for (let i = 0; i <
         videogameGenreList.length; i++) { %>
         <div class="videogameContainer">
-          <a
-            href="/videogame/<%= videogameGenreList[i].videogame_name %>"
-            ><%= videogameGenreList[i].videogame_name %></a
-          >
+          
+          <img src="<%= videogameGenreList[i].videogame_image %>" class="img" alt="">
         </div>
         <% } %> <% } %>
     </div>
