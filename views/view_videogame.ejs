@@ -10,13 +10,23 @@
     <p>videogame</p>
     <% if (videogameInformation) {%>
     <div class="videogameContainer">
+      <div>
+        <% for (let i = 0; i <
+        videogameInformation[0].videoGameGenreArray.length; i++) { %>
+        <div class="videogameContainer">
+          <a
+            href="/videogame_categorie/<%= videogameInformation[0].videoGameGenreArray[i] %>"
+            ><%= videogameInformation[0].videoGameGenreArray[i] %></a
+          >
+        </div>
+        <% } %>
+      </div>
       <span><%= videogameInformation[0].videogame_name %></span>
       <span><%= videogameInformation[0].videogame_description %></span>
       <span><%= videogameInformation[0].publisher %></span>
       <span><%= videogameInformation[0].videogame_price %></span>
       <span><%= videogameInformation[0].videogame_release_date %></span>
       <span><%= videogameInformation[0].videogame_rating %></span>
-      <span><%= videogameInformation[0].videogame_genre %></span>
     </div>
     <% } %>
   </body>
