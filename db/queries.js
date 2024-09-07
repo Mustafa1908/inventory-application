@@ -16,7 +16,7 @@ async function getAllVideogamesGenresPublishers() {
 
 async function getVideogameCategorieDescription(videogameCategorie) {
   const { rows } = await pool.query(
-    `SELECT videogame_categorie_name, videogame_categorie_description FROM videogame_categorie WHERE videogame_categorie_name = '${videogameCategorie}'`
+    `SELECT videogame_categorie_name, videogame_categorie_description, videogame_categorie_image FROM  videogame_categorie WHERE videogame_categorie_name = '${videogameCategorie}'`
   );
   return rows;
 }
