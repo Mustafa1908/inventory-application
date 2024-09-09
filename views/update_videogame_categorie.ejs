@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Videogame Category</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    <form
+      action="/videogame_categorie/<%= videogameCategorieParams.id %>/<%= videogameCategorieParams.videogameCategorieId %>/update"
+      method="POST"
+    >
+      <label for="videogameCategorie">Videogame Categorie Name: </label>
+      <input
+        type="text"
+        name="videogameCategorie"
+        id="videogameCategorie"
+        value="<%= videogameGenreInformation[0].videogame_categorie_name %>"
+      />
+      <label for="videogameCategorieDescription"
+        >Videogame Categorie Description:
+      </label>
+      <input
+        type="text"
+        name="videogameCategorieDescription"
+        id="videogameCategorieDescription"
+        value="<%= videogameGenreInformation[0].videogame_categorie_description %>"
+      />
+      <label for="videogameCategorieImage"
+        >Videogame Categorie Image(url):
+      </label>
+      <input
+        type="text"
+        name="videogameCategorieImage"
+        id="videogameCategorieImage"
+        value="<%= videogameGenreInformation[0].videogame_categorie_image %>"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
