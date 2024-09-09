@@ -35,7 +35,18 @@ async function getAllVideogamesCategoriesAndDescriptions() {
 
 async function getAllVideogamesCategories() {
   const { rows } = await pool.query(
-    "SELECT videogame_categorie_name, videogame_categorie_image FROM videogame_categorie"
+    "SELECT id, videogame_categorie_name, videogame_categorie_image FROM videogame_categorie ORDER BY id ASC"
+  );
+  return rows;
+}
+
+async function updateVideogameCategorie(videogameCategorieInformations) {
+  const { rows } = await pool.query(
+    `UPDATE videogame_categorie 
+    SET videogame_categorie_name = '${videogameCategorieInformations[0]}', 
+    videogame_categorie_description = '${videogameCategorieInformations[1]}', 
+    videogame_categorie_image = '${videogameCategorieInformations[2]}'
+    WHERE id = ${videogameCategorieInformations[3]};`
   );
   return rows;
 }
@@ -95,6 +106,7 @@ module.exports = {
   getAllVideogamesWithSpecificGenre,
   getAllVideogamesCategoriesAndDescriptions,
   getAllVideogamesCategories,
+  updateVideogameCategorie,
   getCurrentVideogameId,
   insertNewVideogame,
   insertNewVideogameGenre,
