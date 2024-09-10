@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    <form action="/create_videogame" method="POST">
+      <label for="videogameName">Videogame Name: </label>
+      <input
+        type="text"
+        name="videogameName"
+        id="videogameName"
+        value="<%= videogameInformation[0].videogame_name %>"
+      />
+      <label for="videogameDescription">Videogame Description: </label>
+      <input
+        type="text"
+        name="videogameDescription"
+        id="videogameDescription"
+        value="<%= videogameInformation[0].videogame_description %>"
+      />
+      <label for="videogamePublisher">Videogame Publisher: </label>
+      <input
+        type="text"
+        name="videogamePublisher"
+        id="videogamePublisher"
+        value="<%= videogameInformation[0].publisher %>"
+      />
+      <label for="videogameQuantity">Videogame Quantity: </label>
+      <input
+        type="number"
+        name="videogameQuantity"
+        id="videogameQuantity"
+        value="<%= videogameInformation[0].videogame_quantity %>"
+      />
+      <label for="videogamePrice">Videogame Price: </label>
+      <input
+        type="number"
+        name="videogamePrice"
+        id="videogamePrice"
+        value="<%= videogameInformation[0].videogame_price %>"
+      /><br />
+      <label for="videogameRating">Videogame Rating: </label>
+      <input
+        type="number"
+        step="any"
+        min="0"
+        max="5"
+        name="videogameRating"
+        id="videogameRating"
+        value="<%= videogameInformation[0].videogame_rating %>"
+      />
+      <br />
+      <label for="videogameReleaseDate">Videogame Release Date: </label>
+      <input
+        type="date"
+        name="videogameReleaseDate"
+        id="videogameReleaseDate"
+        value="<%= videogameInformation[0].videogame_release_date %>"
+      />
+      <label for="videogameImage">Videogame Image: </label>
+      <input
+        type="string"
+        name="videogameImage"
+        id="videogameImage"
+        value="<%= videogameInformation[0].videogame_image %>"
+      />
+
+      <fieldset>
+        <legend>Choose your videogames genres:</legend>
+        <% if (videogameCategories) {%> <% for (let i = 0; i <
+        videogameCategories.length; i++) { %> <% if (videogameGenreChecked[i][0]
+        === "true") {%>
+        <div>
+          <label for="scales"
+            ><%= videogameCategories[i].videogame_categorie_name %></label
+          >
+          <input
+            type="checkbox"
+            id="scales"
+            name="videogameGenre"
+            checked="true"
+          />
+        </div>
+        <% continue %> <% } %>
+        <div>
+          <label for="scales"
+            ><%= videogameCategories[i].videogame_categorie_name %></label
+          >
+          <input type="checkbox" id="test" name="videogameGenre" />
+        </div>
+        <% } %> <% } %>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
