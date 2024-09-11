@@ -96,6 +96,43 @@ async function insertNewVideogamePublisher(videogamePublisher) {
   );
 }
 
+async function updateVideogame(videogameInformations) {
+  const { rows } = await pool.query(
+    `UPDATE videogame 
+    SET videogame_name = '${videogameInformations[0]}',  
+    videogame_description = '${videogameInformations[1]}', 
+    videogame_price = '${videogameInformations[2]}', 
+    videogame_image = '${videogameInformations[3]}', 
+    videogame_release_date = '${videogameInformations[4]}', 
+    videogame_rating = '${videogameInformations[5]}', 
+    videogame_quantity = '${videogameInformations[6]}'
+    WHERE id = ${videogameInformations[7]};`
+  );
+  return rows;
+}
+
+async function updateVideogameGenre(videogameInformations) {
+  const { rows } = await pool.query(
+    `UPDATE videogame_categorie 
+    SET videogame_categorie_name = '${videogameInformations[0]}', 
+    videogame_categorie_description = '${videogameInformations[1]}', 
+    videogame_categorie_image = '${videogameInformations[2]}'
+    WHERE id = ${videogameInformations[3]};`
+  );
+  return rows;
+}
+
+async function updateVideogamePublisher(videogameInformations) {
+  const { rows } = await pool.query(
+    `UPDATE videogame_categorie 
+    SET videogame_categorie_name = '${videogameInformations[0]}', 
+    videogame_categorie_description = '${videogameInformations[1]}', 
+    videogame_categorie_image = '${videogameInformations[2]}'
+    WHERE id = ${videogameInformations[3]};`
+  );
+  return rows;
+}
+
 async function insertNewVideogameCategorie(newVideogameCategorie) {
   await pool.query(
     "INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) VALUES ($1, $2, $3)",
@@ -120,5 +157,8 @@ module.exports = {
   insertNewVideogame,
   insertNewVideogameGenre,
   insertNewVideogamePublisher,
+  updateVideogame,
+  updateVideogameGenre,
+  updateVideogamePublisher,
   insertNewVideogameCategorie,
 };
