@@ -7,7 +7,10 @@
   </head>
   <body>
     <%- include('navbar'); -%>
-    <form action="/create_videogame" method="POST">
+    <form
+      action="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/update"
+      method="POST"
+    >
       <label for="videogameName">Videogame Name: </label>
       <input
         type="text"
