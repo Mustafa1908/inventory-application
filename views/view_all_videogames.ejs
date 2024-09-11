@@ -13,7 +13,7 @@
       <% if (videogameInformation) {%> <% for (let i = 0; i <
       videogameInformation.length; i++) { %>
       <a
-        href="/videogame/<%= videogameInformation[i].videogame_name %>"
+        href="/videogame/<%= videogameInformation[i].videogame_name %>/<%= videogameInformation[i].id %>"
         class="openMessageLink"
         ><%= videogameInformation[i].videogame_name %>
         <div class="videogameContainer">
