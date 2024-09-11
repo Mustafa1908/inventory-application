@@ -4,6 +4,7 @@ const splitStringInArray = require("../utils/splitStrinIntoArray");
 async function getAllVideogamesGet(req, res) {
   let allVideogamesGenresPublishers =
     await db.getAllVideogamesGenresPublishers();
+
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
@@ -52,8 +53,30 @@ async function getUpdateVideogameGet(req, res) {
   res.render("update_videogame", {
     videogameCategories: allVideogameCategorie,
     videogameInformation: videogameInformation,
-    videogameCategorieParams: req.params,
+    videogameParams: req.params,
     videogameGenreChecked: genreArray,
+  });
+}
+
+async function updateVideogamePost(req, res) {
+  let uptadedVideogame = [
+    req.body.videogameName,
+    req.body.videogameDescription,
+    req.body.videogamePrice,
+    req.body.videogameImage,
+    req.body.videogameReleaseDate,
+    req.body.videogameRating,
+    req.body.videogameQuantity,
+    req.params.videogameId,
+  ];
+  let allVideogamesGenresPublishers =
+    await db.getAllVideogamesGenresPublishers();
+
+  await db.updateVideogame(uptadedVideogame);
+  res.redirect("/videogame");
+
+  res.render("view_all_videogames", {
+    videogameInformation: allVideogamesGenresPublishers,
   });
 }
 
@@ -61,4 +84,5 @@ module.exports = {
   getAllVideogamesGet,
   getVideogameGet,
   getUpdateVideogameGet,
+  updateVideogamePost,
 };
