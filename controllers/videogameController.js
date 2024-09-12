@@ -1,5 +1,6 @@
 const db = require("../db/queries");
-const splitStringInArray = require("../utils/splitStrinIntoArray");
+const splitStringInArray = require("../utils/splitStringIntoArray");
+const splitCheckedOrNotGenreInArray = require("../utils/splitCheckedOrNotGenreInArray");
 
 async function getAllVideogamesGet(req, res) {
   let allVideogamesGenresPublishers =
@@ -32,29 +33,16 @@ async function getUpdateVideogameGet(req, res) {
     videogameInformation[0].videogame_genre
   );
   videogameInformation[0].videoGameGenreArray = videogameGenre;
-  let genreArray = [];
-
-  //Create genreArray
-  for (let i = 0; i < allVideogameCategorie.length; i++) {
-    genreArray.push(["false"]);
-  }
-
-  //Check which genre are checked
-  for (let i = 0; i < allVideogameCategorie.length; i++) {
-    if (
-      videogameInformation[0].videoGameGenreArray.includes(
-        allVideogameCategorie[i].videogame_categorie_name
-      )
-    ) {
-      genreArray[i] = ["true"];
-    }
-  }
+  let checkedOrNotArray =
+    await splitCheckedOrNotGenreInArray.splitCheckedOrNotGenreInArray(
+      req.params.id
+    );
 
   res.render("update_videogame", {
     videogameCategories: allVideogameCategorie,
     videogameInformation: videogameInformation,
     videogameParams: req.params,
-    videogameGenreChecked: genreArray,
+    videogameGenreChecked: checkedOrNotArray,
   });
 }
 
