@@ -1,3 +1,4 @@
+const { check } = require("express-validator");
 const pool = require("./pool");
 
 async function getVideogameGenrePublisher(videogameName) {
@@ -97,7 +98,7 @@ async function insertNewVideogamePublisher(videogamePublisher) {
 }
 
 async function updateVideogame(videogameInformations) {
-  const { rows } = await pool.query(
+  await pool.query(
     `UPDATE videogame 
     SET videogame_name = '${videogameInformations[0]}',  
     videogame_description = '${videogameInformations[1]}', 
@@ -108,29 +109,6 @@ async function updateVideogame(videogameInformations) {
     videogame_quantity = '${videogameInformations[6]}'
     WHERE id = ${videogameInformations[7]};`
   );
-  return rows;
-}
-
-async function updateVideogameGenre(videogameInformations) {
-  const { rows } = await pool.query(
-    `UPDATE videogame_categorie 
-    SET videogame_categorie_name = '${videogameInformations[0]}', 
-    videogame_categorie_description = '${videogameInformations[1]}', 
-    videogame_categorie_image = '${videogameInformations[2]}'
-    WHERE id = ${videogameInformations[3]};`
-  );
-  return rows;
-}
-
-async function updateVideogamePublisher(videogameInformations) {
-  const { rows } = await pool.query(
-    `UPDATE videogame_categorie 
-    SET videogame_categorie_name = '${videogameInformations[0]}', 
-    videogame_categorie_description = '${videogameInformations[1]}', 
-    videogame_categorie_image = '${videogameInformations[2]}'
-    WHERE id = ${videogameInformations[3]};`
-  );
-  return rows;
 }
 
 async function insertNewVideogameCategorie(newVideogameCategorie) {
@@ -158,7 +136,5 @@ module.exports = {
   insertNewVideogameGenre,
   insertNewVideogamePublisher,
   updateVideogame,
-  updateVideogameGenre,
-  updateVideogamePublisher,
   insertNewVideogameCategorie,
 };
