@@ -111,6 +111,18 @@ async function updateVideogame(videogameInformations) {
   );
 }
 
+async function deleteVideogame(videogameName, videogameId) {
+  await pool.query(
+    `DELETE   FROM videogame WHERE videogame_name = '${videogameName}';`
+  );
+  await pool.query(
+    `DELETE   FROM videogame_genre WHERE id = '${videogameId}';`
+  );
+  await pool.query(
+    `DELETE   FROM videogame_publisher WHERE id = '${videogameId}';`
+  );
+}
+
 async function insertNewVideogameCategorie(newVideogameCategorie) {
   await pool.query(
     "INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) VALUES ($1, $2, $3)",
@@ -136,5 +148,6 @@ module.exports = {
   insertNewVideogameGenre,
   insertNewVideogamePublisher,
   updateVideogame,
+  deleteVideogame,
   insertNewVideogameCategorie,
 };
