@@ -57,12 +57,33 @@ async function updateVideogamePost(req, res) {
     req.body.videogameQuantity,
     req.params.videogameId,
   ];
-  let allVideogamesGenresPublishers =
-    await db.getAllVideogamesGenresPublishers();
 
   await db.updateVideogame(uptadedVideogame);
   res.redirect("/videogame");
 
+  let allVideogamesGenresPublishers =
+    await db.getAllVideogamesGenresPublishers();
+  res.render("view_all_videogames", {
+    videogameInformation: allVideogamesGenresPublishers,
+  });
+}
+
+async function getDeleteVideogameGet(req, res) {
+  let videogameInformations = await db.getVideogame(req.params.id);
+
+  res.render("delete_videogame", {
+    videogameParams: req.params,
+    videogameInformations: videogameInformations,
+  });
+}
+
+async function deleteVideogamePost(req, res) {
+  await db.deleteVideogame(req.params.id, req.params.videogameId);
+
+  res.redirect("/videogame");
+
+  let allVideogamesGenresPublishers =
+    await db.getAllVideogamesGenresPublishers();
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
@@ -73,4 +94,6 @@ module.exports = {
   getVideogameGet,
   getUpdateVideogameGet,
   updateVideogamePost,
+  getDeleteVideogameGet,
+  deleteVideogamePost,
 };
