@@ -22,11 +22,16 @@ async function createVideoGamePost(req, res) {
     req.body.videogameQuantity,
     req.body.videogameImage,
   ];
-
   await db.insertNewVideogame(newVideogame);
   let id = await db.getCurrentVideogameId();
   let videogameGenre = [req.body.videogameGenre, id[id.length - 1]];
+  if (Array.isArray(req.body.videogameGenre) === false) {
+    console.log("hey");
+
+    videogameGenre[0] = [req.body.videogameGenre];
+  }
   let videogamePublisher = [req.body.videogamePublisher, id[id.length - 1]];
+  console.log(videogameGenre);
 
   await db.insertNewVideogameGenre(videogameGenre);
   await db.insertNewVideogamePublisher(videogamePublisher);
