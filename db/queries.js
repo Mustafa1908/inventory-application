@@ -24,7 +24,7 @@ async function getVideogameCategorieDescription(videogameCategorie) {
 
 async function getAllVideogamesWithSpecificGenre(videogameGenre) {
   const { rows } = await pool.query(
-    `SELECT  videogame_name, videogame_image,  STRING_AGG(videogame_categorie_name, ' ' ORDER BY videogame_categorie_name DESC) AS videogame_genre FROM videogame JOIN videogame_genre ON videogame.id = videogame_genre.id  WHERE videogame_categorie_name = '${videogameGenre}' GROUP BY videogame.id, videogame_genre.id;`
+    `SELECT videogame.id, videogame_name, videogame_image, STRING_AGG(videogame_categorie_name, ' ' ORDER BY videogame_categorie_name DESC) AS videogame_genre FROM videogame JOIN videogame_genre ON videogame.id = videogame_genre.id WHERE videogame_categorie_name = '${videogameGenre}' GROUP BY videogame.id, videogame_genre.id;`
   );
   return rows;
 }
@@ -52,6 +52,33 @@ async function updateVideogameCategorie(videogameCategorieInformations) {
   return rows;
 }
 
+async function deleteVideogameCategorie(
+  videogameCategorieName,
+  videogameSpecificGenreId
+) {
+  await pool.query(
+    `DELETE FROM videogame_categorie WHERE videogame_categorie_name = '${videogameCategorieName}';`
+  );
+  await pool.query(
+    `DELETE FROM videogame_genre WHERE videogame_categorie_name = '${videogameCategorieName}';`
+  );
+
+  for (let i = 0; i < videogameSpecificGenreId.length; i++) {
+    const { rows } = await pool.query(
+      `SELECT * FROM videogame_genre WHERE id = ${videogameSpecificGenreId[i]};`
+    );
+    if (rows.length === 1) {
+      console.log("hey");
+      await pool.query(
+        `DELETE FROM videogame WHERE id = ${videogameSpecificGenreId[i]};`
+      );
+      await pool.query(
+        `DELETE FROM videogame_publisher WHERE id = ${videogameSpecificGenreId[i]};`
+      );
+    }
+  }
+}
+
 async function getVideogame(videogameName) {
   const { rows } = await pool.query(
     `SELECT videogame.id, videogame_name,  videogame_description, videogame_price, videogame_image, videogame_release_date, videogame_rating, publisher, videogame_quantity,  STRING_AGG(videogame_categorie_name, ' ' ORDER BY videogame_categorie_name ASC) AS videogame_genre FROM videogame JOIN videogame_genre ON videogame.id = videogame_genre.id JOIN videogame_publisher ON videogame.id = videogame_publisher.id WHERE videogame_name = '${videogameName}'  GROUP BY videogame.id, videogame_genre.id, videogame_publisher.publisher;
@@ -66,7 +93,6 @@ async function getCurrentVideogameId() {
 }
 
 async function insertNewVideogame(newVideogame) {
-  console.log(newVideogame[4]);
   await pool.query(
     "INSERT INTO videogame (videogame_name,  videogame_description, videogame_price, videogame_release_date, videogame_rating, videogame_quantity, videogame_image) VALUES ($1, $2, $3, $4, $5 , $6, $7)",
     [
@@ -83,6 +109,9 @@ async function insertNewVideogame(newVideogame) {
 
 async function insertNewVideogameGenre(videogameGenre) {
   for (let i = 0; i < videogameGenre[0].length; i++) {
+    console.log(videogameGenre[0].length);
+    console.log(videogameGenre[0][0]);
+    console.log(videogameGenre[1].id);
     await pool.query(
       "INSERT INTO videogame_genre (id, videogame_categorie_name) VALUES ($1, $2)",
       [videogameGenre[1].id, videogameGenre[0][i]]
@@ -142,6 +171,7 @@ module.exports = {
   getAllVideogamesCategoriesAndDescriptions,
   getAllVideogamesCategories,
   updateVideogameCategorie,
+  deleteVideogameCategorie,
   getVideogame,
   getCurrentVideogameId,
   insertNewVideogame,
