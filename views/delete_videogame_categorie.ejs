@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      Are you sure you wanna delete <%= videogameCategorieParams.id %> game
+      categorie
+    </p>
+    <p>There is <%= videogameCategorieLength %> videogames in it</p>
+    <form
+      action="/videogame_categorie/<%= videogameCategorieParams.id %>/<%= videogameCategorieParams.videogameCategorieId %>/delete"
+      method="post"
+    >
+      <button type="submit">Delete</button>
+    </form>
+  </body>
+</html>
