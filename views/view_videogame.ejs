@@ -25,7 +25,7 @@
         videogameInformation[0].videoGameGenreArray.length; i++) { %>
         <div class="videogameContainer">
           <a
-            href="/videogame_categorie/<%= videogameInformation[0].videoGameGenreArray[i] %>"
+            href="/videogame_categorie/<%= videogameInformation[0].videoGameGenreArray[i] %>/<%= videogameAllGenresId[i][0].id %>"
             ><%= videogameInformation[0].videoGameGenreArray[i] %></a
           >
         </div>
