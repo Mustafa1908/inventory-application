@@ -22,7 +22,7 @@
       <% if (videogameGenreList) {%> <% for (let i = 0; i <
         videogameGenreList.length; i++) { %>
           <a
-          href="/videogame/<%= videogameGenreList[i].videogame_name %>"
+          href="/videogame/<%= videogameGenreList[i].videogame_name %>/<%= videogameGenreList[i].id %>"
           class="openMessageLink"
           >
         <div class="videogameContainer">
