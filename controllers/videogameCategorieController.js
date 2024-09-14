@@ -51,9 +51,42 @@ async function updateVideogameCategoriePost(req, res) {
   });
 }
 
+async function getDeleteVideogameCategorieGet(req, res) {
+  let videogameSpecificGenre = await db.getAllVideogamesWithSpecificGenre(
+    req.params.id
+  );
+
+  res.render("delete_videogame_categorie", {
+    videogameCategorieParams: req.params,
+    videogameCategorieLength: videogameSpecificGenre.length,
+  });
+}
+
+async function deleteVideogameCategoriePost(req, res) {
+  let videogamesSpecificGenre = await db.getAllVideogamesWithSpecificGenre(
+    req.params.id
+  );
+  let videogamesSpecificGenreId = [];
+
+  //create videogamesSpecificGenreIndexArray
+  for (let i = 0; i < videogamesSpecificGenre.length; i++) {
+    videogamesSpecificGenreId.push(videogamesSpecificGenre[i].id);
+  }
+  console.log(videogamesSpecificGenreId);
+  await db.deleteVideogameCategorie(req.params.id, videogamesSpecificGenreId);
+  let videogameCategories = await db.getAllVideogamesCategories();
+
+  res.redirect("/videogame_categorie");
+  res.render("view_all_videogames_categories", {
+    videogameCategories: videogameCategories,
+  });
+}
+
 module.exports = {
   getAllVideogameCategoriesGet,
   getVideogameCategorieGet,
   getUpdateVideogameCategorieGet,
   updateVideogameCategoriePost,
+  getDeleteVideogameCategorieGet,
+  deleteVideogameCategoriePost,
 };
