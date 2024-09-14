@@ -22,6 +22,18 @@ async function getVideogameCategorieDescription(videogameCategorie) {
   return rows;
 }
 
+async function getMultipleVideogamesCategoriesId(videogameGenreName) {
+  let videogameGenreId = [];
+  for (let i = 0; i < videogameGenreName.length; i++) {
+    let { rows } = await pool.query(
+      `SELECT Id FROM videogame_categorie WHERE videogame_categorie_name = '${videogameGenreName[i]}';
+`
+    );
+    videogameGenreId.push(rows);
+  }
+  return videogameGenreId;
+}
+
 async function getAllVideogamesWithSpecificGenre(videogameGenre) {
   const { rows } = await pool.query(
     `SELECT videogame.id, videogame_name, videogame_image, STRING_AGG(videogame_categorie_name, ' ' ORDER BY videogame_categorie_name DESC) AS videogame_genre FROM videogame JOIN videogame_genre ON videogame.id = videogame_genre.id WHERE videogame_categorie_name = '${videogameGenre}' GROUP BY videogame.id, videogame_genre.id;`
@@ -164,6 +176,7 @@ module.exports = {
   getVideogameGenrePublisher,
   getAllVideogamesGenresPublishers,
   getVideogameCategorieDescription,
+  getMultipleVideogamesCategoriesId,
   getAllVideogamesWithSpecificGenre,
   getAllVideogamesCategoriesAndDescriptions,
   getAllVideogamesCategories,
