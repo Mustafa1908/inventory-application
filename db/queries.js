@@ -56,19 +56,12 @@ async function deleteVideogameCategorie(
   videogameCategorieName,
   videogameSpecificGenreId
 ) {
-  await pool.query(
-    `DELETE FROM videogame_categorie WHERE videogame_categorie_name = '${videogameCategorieName}';`
-  );
-  await pool.query(
-    `DELETE FROM videogame_genre WHERE videogame_categorie_name = '${videogameCategorieName}';`
-  );
-
   for (let i = 0; i < videogameSpecificGenreId.length; i++) {
-    const { rows } = await pool.query(
-      `SELECT * FROM videogame_genre WHERE id = ${videogameSpecificGenreId[i]};`
+    let { rows } = await pool.query(
+      `SELECT id FROM videogame_genre WHERE id = ${videogameSpecificGenreId[i]};`
     );
+
     if (rows.length === 1) {
-      console.log("hey");
       await pool.query(
         `DELETE FROM videogame WHERE id = ${videogameSpecificGenreId[i]};`
       );
@@ -77,6 +70,13 @@ async function deleteVideogameCategorie(
       );
     }
   }
+
+  await pool.query(
+    `DELETE FROM videogame_categorie WHERE videogame_categorie_name = '${videogameCategorieName}';`
+  );
+  await pool.query(
+    `DELETE FROM videogame_genre WHERE videogame_categorie_name = '${videogameCategorieName}';`
+  );
 }
 
 async function getVideogame(videogameName) {
@@ -109,9 +109,6 @@ async function insertNewVideogame(newVideogame) {
 
 async function insertNewVideogameGenre(videogameGenre) {
   for (let i = 0; i < videogameGenre[0].length; i++) {
-    console.log(videogameGenre[0].length);
-    console.log(videogameGenre[0][0]);
-    console.log(videogameGenre[1].id);
     await pool.query(
       "INSERT INTO videogame_genre (id, videogame_categorie_name) VALUES ($1, $2)",
       [videogameGenre[1].id, videogameGenre[0][i]]
