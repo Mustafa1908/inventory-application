@@ -53,6 +53,17 @@ async function getAllVideogamesCategories() {
   return rows;
 }
 
+async function insertNewVideogameCategorie(newVideogameCategorie) {
+  await pool.query(
+    "INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) VALUES ($1, $2, $3)",
+    [
+      newVideogameCategorie[0],
+      newVideogameCategorie[1],
+      newVideogameCategorie[2],
+    ]
+  );
+}
+
 async function updateVideogameCategorie(videogameCategorieInformations) {
   const { rows } = await pool.query(
     `UPDATE videogame_categorie 
@@ -161,17 +172,6 @@ async function deleteVideogame(videogameName, videogameId) {
   );
 }
 
-async function insertNewVideogameCategorie(newVideogameCategorie) {
-  await pool.query(
-    "INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) VALUES ($1, $2, $3)",
-    [
-      newVideogameCategorie[0],
-      newVideogameCategorie[1],
-      newVideogameCategorie[2],
-    ]
-  );
-}
-
 module.exports = {
   getVideogameGenrePublisher,
   getAllVideogamesGenresPublishers,
@@ -180,6 +180,7 @@ module.exports = {
   getAllVideogamesWithSpecificGenre,
   getAllVideogamesCategoriesAndDescriptions,
   getAllVideogamesCategories,
+  insertNewVideogameCategorie,
   updateVideogameCategorie,
   deleteVideogameCategorie,
   getVideogame,
@@ -189,5 +190,4 @@ module.exports = {
   insertNewVideogamePublisher,
   updateVideogame,
   deleteVideogame,
-  insertNewVideogameCategorie,
 };
