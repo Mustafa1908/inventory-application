@@ -19,10 +19,14 @@ async function getVideogameGet(req, res) {
     videogameGenrePublisher[0].videogame_genre
   );
   videogameGenrePublisher[0].videoGameGenreArray = videogameGenre;
+  let videogameAllGenresId = await db.getMultipleVideogamesCategoriesId(
+    videogameGenrePublisher[0].videoGameGenreArray
+  );
 
   res.render("view_videogame", {
     videogameInformation: videogameGenrePublisher,
     videogameParams: req.params,
+    videogameAllGenresId: videogameAllGenresId,
   });
 }
 
