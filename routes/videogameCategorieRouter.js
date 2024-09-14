@@ -15,5 +15,13 @@ router.post(
   "/:id/:videogameCategorieId/update",
   videogameCategorieController.updateVideogameCategoriePost
 );
+router.get(
+  "/:id/:videogameCategorieId/delete",
+  videogameCategorieController.getDeleteVideogameCategorieGet
+);
+router.post(
+  "/:id/:videogameCategorieId/delete",
+  videogameCategorieController.deleteVideogameCategoriePost
+);
 
 module.exports = router;
