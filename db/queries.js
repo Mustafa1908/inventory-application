@@ -169,6 +169,53 @@ async function updateVideogame(videogameInformations) {
   );
 }
 
+async function updateVideogameGenre(
+  videogameGenreChecked,
+  videogameId,
+  allVideogamesCategoriesArray
+) {
+  const { rows } = await pool.query(
+    `SELECT videogame_categorie_name FROM videogame_genre WHERE id = ${videogameId};`
+  );
+  let removeGenreArray = [];
+
+  //Remove all checked categories from array
+
+  for (let i = 0; i < videogameGenreChecked.length; i++) {
+    let genreIndex = allVideogamesCategoriesArray.indexOf(
+      videogameGenreChecked[i]
+    );
+    allVideogamesCategoriesArray.splice(genreIndex, 1);
+  }
+
+  //Remove already present genre from array
+  for (let i = 0; i < rows.length; i++) {
+    if (videogameGenreChecked.includes(rows[i].videogame_categorie_name)) {
+      let genreIndex = videogameGenreChecked.indexOf(
+        rows[i].videogame_categorie_name
+      );
+      videogameGenreChecked.splice(genreIndex, 1);
+    }
+  }
+
+  if (allVideogamesCategoriesArray.length > 0) {
+    for (let i = 0; i < allVideogamesCategoriesArray.length; i++) {
+      await pool.query(
+        `DELETE FROM videogame_genre   WHERE id = ${videogameId} AND videogame_categorie_name = '${allVideogamesCategoriesArray[i]}';`
+      );
+    }
+  }
+
+  if (videogameGenreChecked.length > 0) {
+    for (let i = 0; i < videogameGenreChecked.length; i++) {
+      await pool.query(
+        "INSERT INTO videogame_genre (id, videogame_categorie_name) VALUES ($1, $2)",
+        [videogameId, videogameGenreChecked[i]]
+      );
+    }
+  }
+}
+
 async function deleteVideogame(videogameName, videogameId) {
   await pool.query(
     `DELETE   FROM videogame WHERE videogame_name = '${videogameName}';`
@@ -198,5 +245,6 @@ module.exports = {
   insertNewVideogameGenre,
   insertNewVideogamePublisher,
   updateVideogame,
+  updateVideogameGenre,
   deleteVideogame,
 };
