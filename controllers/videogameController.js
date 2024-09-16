@@ -61,12 +61,36 @@ async function updateVideogamePost(req, res) {
     req.body.videogameQuantity,
     req.params.videogameId,
   ];
+  let allVideogamesCategoriesInformations =
+    await db.getAllVideogamesCategories();
+  let allVideogameCategoriesArray = [];
+  //Create allVideogamesCategoriesArray
+  for (let i = 0; i < allVideogamesCategoriesInformations.length; i++) {
+    allVideogameCategoriesArray.push(
+      allVideogamesCategoriesInformations[i].videogame_categorie_name
+    );
+  }
+
+  if (Array.isArray(req.body.videogameGenre) === false) {
+    await db.updateVideogameGenre(
+      [req.body.videogameGenre],
+      req.params.videogameId,
+      allVideogameCategoriesArray
+    );
+  } else {
+    await db.updateVideogameGenre(
+      req.body.videogameGenre,
+      req.params.videogameId,
+      allVideogameCategoriesArray
+    );
+  }
 
   await db.updateVideogame(uptadedVideogame);
   res.redirect("/videogame");
 
   let allVideogamesGenresPublishers =
     await db.getAllVideogamesGenresPublishers();
+
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
