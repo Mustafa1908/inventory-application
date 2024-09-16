@@ -66,13 +66,22 @@ async function insertNewVideogameCategorie(newVideogameCategorie) {
 
 async function updateVideogameCategorie(videogameCategorieInformations) {
   const { rows } = await pool.query(
+    `SELECT  videogame_categorie_name FROM videogame_categorie WHERE id = ${videogameCategorieInformations[3]};`
+  );
+
+  await pool.query(
+    `UPDATE videogame_genre 
+    SET videogame_categorie_name = '${videogameCategorieInformations[0]}' 
+    WHERE videogame_categorie_name = '${rows[0].videogame_categorie_name}';`
+  );
+
+  await pool.query(
     `UPDATE videogame_categorie 
     SET videogame_categorie_name = '${videogameCategorieInformations[0]}', 
     videogame_categorie_description = '${videogameCategorieInformations[1]}', 
     videogame_categorie_image = '${videogameCategorieInformations[2]}'
     WHERE id = ${videogameCategorieInformations[3]};`
   );
-  return rows;
 }
 
 async function deleteVideogameCategorie(
