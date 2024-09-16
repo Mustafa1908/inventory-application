@@ -64,6 +64,38 @@
         id="videogameImage"
         value="<%= videogameInformation[0].videogame_image %>"
       />
+      <fieldset>
+        <legend>Choose your videogames genres:</legend>
+        <% if (videogameCategories) {%> <% for (let i = 0; i <
+        videogameCategories.length; i++) { %>
+          <% if (videogameGenreChecked[i][0] === "true") {%>
+            <div>
+              <label for="scales"
+                ><%= videogameCategories[i].videogame_categorie_name %></label
+              >
+        
+              <input
+                type="checkbox"
+                id="scales"
+                name="videogameGenre"
+                value="<%= videogameCategories[i].videogame_categorie_name %>"
+                checked="true"
+              />
+              <% continue; %>
+            <% }%> 
+        <div>
+          <label for="scales"
+            ><%= videogameCategories[i].videogame_categorie_name %></label
+          >
+          <input
+            type="checkbox"
+            id="scales"
+            name="videogameGenre"
+            value="<%= videogameCategories[i].videogame_categorie_name %>"
+          />
+        </div>
+        <% } %> <% } %>
+      </fieldset>
       <button type="submit">Submit</button>
     </form>
   </body>
