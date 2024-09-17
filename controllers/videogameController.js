@@ -5,7 +5,6 @@ const splitCheckedOrNotGenreInArray = require("../utils/splitCheckedOrNotGenreIn
 async function getAllVideogamesGet(req, res) {
   let allVideogamesGenresPublishers =
     await db.getAllVideogamesGenresPublishers();
-
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
