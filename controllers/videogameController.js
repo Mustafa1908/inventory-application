@@ -61,6 +61,21 @@ async function updateVideogamePost(req, res) {
     req.body.videogameQuantity,
     req.params.videogameId,
   ];
+
+  updateVideogameGenrePost(req);
+  updateVideogamePublisherPost(req);
+  await db.updateVideogame(uptadedVideogame);
+  res.redirect("/videogame");
+
+  let allVideogamesGenresPublishers =
+    await db.getAllVideogamesGenresPublishers();
+
+  res.render("view_all_videogames", {
+    videogameInformation: allVideogamesGenresPublishers,
+  });
+}
+
+async function updateVideogameGenrePost(req) {
   let allVideogamesCategoriesInformations =
     await db.getAllVideogamesCategories();
   let allVideogameCategoriesArray = [];
@@ -84,16 +99,13 @@ async function updateVideogamePost(req, res) {
       allVideogameCategoriesArray
     );
   }
+}
 
-  await db.updateVideogame(uptadedVideogame);
-  res.redirect("/videogame");
-
-  let allVideogamesGenresPublishers =
-    await db.getAllVideogamesGenresPublishers();
-
-  res.render("view_all_videogames", {
-    videogameInformation: allVideogamesGenresPublishers,
-  });
+async function updateVideogamePublisherPost(req) {
+  await db.updateVideogamePublisher(
+    req.body.videogamePublisher,
+    req.params.videogameId
+  );
 }
 
 async function getDeleteVideogameGet(req, res) {
