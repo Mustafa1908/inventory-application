@@ -6,7 +6,7 @@
     <title>New Videogame Category</title>
   </head>
   <body>
-    <%- include('navbar'); -%>
+    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %>
     <form action="/create_videogame_categorie" method="POST">
       <label for="videogameCategorie">Videogame Categorie: </label>
       <input
