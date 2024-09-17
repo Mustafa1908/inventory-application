@@ -216,6 +216,14 @@ async function updateVideogameGenre(
   }
 }
 
+async function updateVideogamePublisher(videogamePublisher, videogameId) {
+  await pool.query(
+    `UPDATE videogame_publisher 
+    SET publisher = '${videogamePublisher}'  
+    WHERE id = ${videogameId};`
+  );
+}
+
 async function deleteVideogame(videogameName, videogameId) {
   await pool.query(
     `DELETE   FROM videogame WHERE videogame_name = '${videogameName}';`
@@ -246,5 +254,6 @@ module.exports = {
   insertNewVideogamePublisher,
   updateVideogame,
   updateVideogameGenre,
+  updateVideogamePublisher,
   deleteVideogame,
 };
