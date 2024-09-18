@@ -6,7 +6,41 @@
     <title>New Videogame Category</title>
   </head>
   <body>
-    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %>
+    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %> <%
+    if(formValues) { %>
+    <form action="/create_videogame_categorie" method="POST">
+      <label for="videogameCategorie">Videogame Categorie: </label>
+      <input
+        type="text"
+        name="videogameCategorie"
+        id="videogameCategorie"
+        value="<%= formValues[0] %>"
+        required
+      />
+      <label for="videogameCategorieDescription"
+        >Videogame Categorie Description:
+      </label>
+      <input
+        type="text"
+        name="videogameCategorieDescription"
+        id="videogameCategorieDescription"
+        value="<%= formValues[1] %>"
+        required
+      />
+      <br />
+      <label for="videogameCategorieImage"
+        >Videogame Categorie Image(url):
+      </label>
+      <input
+        type="text"
+        name="videogameCategorieImage"
+        id="videogameCategorieImage"
+        value="<%= formValues[2] %>"
+        required
+      />
+      <button type="submit">Submit</button>
+    </form>
+    <% } else {%>
     <form action="/create_videogame_categorie" method="POST">
       <label for="videogameCategorie">Videogame Categorie: </label>
       <input
@@ -36,5 +70,6 @@
       />
       <button type="submit">Submit</button>
     </form>
+    <% } %>
   </body>
 </html>
