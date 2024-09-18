@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <%- include('navbar'); -%>
+    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %>
     <form
       action="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/update"
       method="POST"
