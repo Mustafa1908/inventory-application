@@ -1,14 +1,16 @@
 const db = require("../db/queries");
+const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
 
-async function getAllVideogameCategoriesGet(req, res) {
+getAllVideogameCategoriesGet = asyncHandler(async (req, res) => {
   let videogameCategories = await db.getAllVideogamesCategories();
 
   res.render("view_all_videogames_categories", {
     videogameCategories: videogameCategories,
   });
-}
+});
 
-async function getVideogameCategorieGet(req, res) {
+getVideogameCategorieGet = asyncHandler(async (req, res) => {
   let videogameGenreInformation = await db.getVideogameCategorieDescription(
     req.params.id
   );
@@ -21,9 +23,9 @@ async function getVideogameCategorieGet(req, res) {
     videogameGenreList: videogameSpecificGenre,
     videogameCategorieParams: req.params,
   });
-}
+});
 
-async function getUpdateVideogameCategorieGet(req, res) {
+getUpdateVideogameCategorieGet = asyncHandler(async (req, res) => {
   let videogameGenreInformation = await db.getVideogameCategorieDescription(
     req.params.id
   );
@@ -32,26 +34,73 @@ async function getUpdateVideogameCategorieGet(req, res) {
     videogameGenreInformation: videogameGenreInformation,
     videogameCategorieParams: req.params,
   });
-}
+});
 
-async function updateVideogameCategoriePost(req, res) {
-  let videogameCategorieInformations = [
-    req.body.videogameCategorie,
-    req.body.videogameCategorieDescription,
-    req.body.videogameCategorieImage,
-    req.params.videogameCategorieId,
-  ];
+//Create form error messages
 
-  await db.updateVideogameCategorie(videogameCategorieInformations);
-  let videogameCategories = await db.getAllVideogamesCategories();
+const videogameCategorieMessage = "must be  between 3 and 20 characters";
+const videogameCategorieDescriptionMessage =
+  "must be  between 3 and 280 characters";
+const videogameCategorieImageUrlMessage = "must be a valid url";
+const videogameCategorieImageLengthMessage =
+  "must be  between 6 and 280 characters";
 
-  res.redirect("/videogame_categorie");
-  res.render("view_all_videogames_categories", {
-    videogameCategories: videogameCategories,
-  });
-}
+const validateVideogameCategorie = [
+  body("videogameCategorie")
+    .trim()
+    .isLength({ min: 3, max: 20 })
+    .withMessage(`Videogame categorie name ${videogameCategorieMessage}`),
+  body("videogameCategorieDescription")
+    .trim()
+    .isLength({ min: 30, max: 280 })
+    .withMessage(
+      `Videogame categorie description ${videogameCategorieDescriptionMessage}`
+    ),
+  body("videogameCategorieImage")
+    .trim()
+    .isURL()
+    .withMessage(
+      `Videogame categorie image ${videogameCategorieImageUrlMessage}`
+    )
+    .isLength({ min: 6, max: 280 })
+    .withMessage(
+      `Videogame categorie image ${videogameCategorieImageLengthMessage}`
+    ),
+];
 
-async function getDeleteVideogameCategorieGet(req, res) {
+updateVideogameCategoriePost = [
+  validateVideogameCategorie,
+  asyncHandler(async (req, res) => {
+    let videogameCategorieInformations = [
+      {
+        videogame_categorie_name: req.body.videogameCategorie,
+        videogame_categorie_description: req.body.videogameCategorieDescription,
+        videogame_categorie_image: req.body.videogameCategorieImage,
+        videogame_categorie_id: req.params.videogameCategorieId,
+      },
+    ];
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("update_videogame_categorie", {
+        title: "Create videogame categorie",
+        errors: errors.array(),
+        videogameGenreInformation: videogameCategorieInformations,
+        videogameCategorieParams: req.params,
+      });
+    }
+
+    await db.updateVideogameCategorie(videogameCategorieInformations);
+    let videogameCategories = await db.getAllVideogamesCategories();
+
+    res.redirect("/videogame_categorie");
+    res.render("view_all_videogames_categories", {
+      videogameCategories: videogameCategories,
+    });
+  }),
+];
+
+getDeleteVideogameCategorieGet = asyncHandler(async (req, res) => {
   let videogameSpecificGenre = await db.getAllVideogamesWithSpecificGenre(
     req.params.id
   );
@@ -60,9 +109,9 @@ async function getDeleteVideogameCategorieGet(req, res) {
     videogameCategorieParams: req.params,
     videogameCategorieLength: videogameSpecificGenre.length,
   });
-}
+});
 
-async function deleteVideogameCategoriePost(req, res) {
+deleteVideogameCategoriePost = asyncHandler(async (req, res) => {
   let videogamesSpecificGenre = await db.getAllVideogamesWithSpecificGenre(
     req.params.id
   );
@@ -80,7 +129,7 @@ async function deleteVideogameCategoriePost(req, res) {
   res.render("view_all_videogames_categories", {
     videogameCategories: videogameCategories,
   });
-}
+});
 
 module.exports = {
   getAllVideogameCategoriesGet,
