@@ -109,7 +109,7 @@ createVideoGamePost = [
 ];
 
 getNewVideogameCategorieGet = (req, res) => {
-  res.render("new_videogame_categorie");
+  res.render("new_videogame_categorie", { formValues: "" });
 };
 
 //Create form error messages
@@ -150,17 +150,18 @@ createVideoGameCategoriePost = [
   validateVideogameCategorie,
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).render("new_videogame_categorie", {
-        title: "Create videogame categorie",
-        errors: errors.array(),
-      });
-    }
     let newVideogameCategorie = [
       req.body.videogameCategorie,
       req.body.videogameCategorieDescription,
       req.body.videogameCategorieImage,
     ];
+    if (!errors.isEmpty()) {
+      return res.status(400).render("new_videogame_categorie", {
+        title: "Create videogame categorie",
+        errors: errors.array(),
+        formValues: newVideogameCategorie,
+      });
+    }
     await db.insertNewVideogameCategorie(newVideogameCategorie);
     res.redirect("/videogame_categorie");
   }),
