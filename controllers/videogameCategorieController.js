@@ -121,7 +121,7 @@ deleteVideogameCategoriePost = asyncHandler(async (req, res) => {
   for (let i = 0; i < videogamesSpecificGenre.length; i++) {
     videogamesSpecificGenreId.push(videogamesSpecificGenre[i].id);
   }
-  console.log(videogamesSpecificGenreId);
+
   await db.deleteVideogameCategorie(req.params.id, videogamesSpecificGenreId);
   let videogameCategories = await db.getAllVideogamesCategories();
 

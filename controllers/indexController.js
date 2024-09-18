@@ -88,7 +88,6 @@ createVideoGamePost = [
       await db.getAllVideogamesCategoriesAndDescriptions();
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log("hey");
       return res.status(400).render("new_videogame", {
         title: "Create videogame",
         errors: errors.array(),
