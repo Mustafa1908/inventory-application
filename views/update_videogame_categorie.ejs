@@ -6,7 +6,7 @@
     <title>Update Videogame Category</title>
   </head>
   <body>
-    <%- include('navbar'); -%>
+    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %>
     <form
       action="/videogame_categorie/<%= videogameCategorieParams.id %>/<%= videogameCategorieParams.videogameCategorieId %>/update"
       method="POST"
