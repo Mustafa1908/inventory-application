@@ -6,7 +6,98 @@
     <title>New Videogame Category</title>
   </head>
   <body>
-    <%- include('navbar'); -%>
+    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %> <% if
+    (formValues) { %>
+    <form action="/create_videogame" method="POST">
+      <label for="videogameName">Videogame Name: </label>
+      <input
+        type="text"
+        name="videogameName"
+        id="videogameName"
+        value="<%= formValues[0] %>"
+        required
+      />
+      <label for="videogameDescription">Videogame Description: </label>
+      <input
+        type="text"
+        name="videogameDescription"
+        id="videogameDescription"
+        value="<%= formValues[1] %>"
+        required
+      />
+      <label for="videogamePublisher">Videogame Publisher: </label>
+      <input
+        type="text"
+        name="videogamePublisher"
+        id="videogamePublisher"
+        value="<%= formValues[7] %>"
+        required
+      />
+      <label for="videogameQuantity">Videogame Quantity: </label>
+      <input
+        type="number"
+        name="videogameQuantity"
+        id="videogameQuantity"
+        value="<%= formValues[5] %>"
+        required
+      />
+      <label for="videogamePrice">Videogame Price: </label>
+      <input
+        type="number"
+        name="videogamePrice"
+        id="videogamePrice"
+        value="<%= formValues[2] %>"
+        required
+      /><br />
+      <label for="videogameRating">Videogame Rating: </label>
+      <input
+        type="number"
+        step="any"
+        min="0"
+        max="5"
+        name="videogameRating"
+        id="videogameRating"
+        value="<%= formValues[4] %>"
+        required
+      />
+      <br />
+      <label for="videogameReleaseDate">Videogame Release Date: </label>
+      <input
+        type="date"
+        name="videogameReleaseDate"
+        id="videogameReleaseDate"
+        value="<%= formValues[3] %>"
+        required
+      />
+      <label for="videogameImage">Videogame Image: </label>
+      <input
+        type="string"
+        name="videogameImage"
+        id="videogameImage"
+        value="<%= formValues[6] %>"
+        required
+      />
+
+      <fieldset>
+        <legend>Choose your videogames genres:</legend>
+        <% if (videogameCategories) {%> <% for (let i = 0; i <
+        videogameCategories.length; i++) { %>
+        <div>
+          <label for="scales"
+            ><%= videogameCategories[i].videogame_categorie_name %></label
+          >
+          <input
+            type="checkbox"
+            id="scales"
+            name="videogameGenre"
+            value="<%= videogameCategories[i].videogame_categorie_name %>"
+          />
+        </div>
+        <% } %> <% } %>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+    <% } else { %>
     <form action="/create_videogame" method="POST">
       <label for="videogameName">Videogame Name: </label>
       <input type="text" name="videogameName" id="videogameName" required />
@@ -78,5 +169,6 @@
       </fieldset>
       <button type="submit">Submit</button>
     </form>
+    <% } %>
   </body>
 </html>
