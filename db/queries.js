@@ -158,14 +158,14 @@ async function insertNewVideogamePublisher(videogamePublisher) {
 async function updateVideogame(videogameInformations) {
   await pool.query(
     `UPDATE videogame 
-    SET videogame_name = '${videogameInformations[0]}',  
-    videogame_description = '${videogameInformations[1]}', 
-    videogame_price = '${videogameInformations[2]}', 
-    videogame_image = '${videogameInformations[3]}', 
-    videogame_release_date = '${videogameInformations[4]}', 
-    videogame_rating = '${videogameInformations[5]}', 
-    videogame_quantity = '${videogameInformations[6]}'
-    WHERE id = ${videogameInformations[7]};`
+    SET videogame_name = '${videogameInformations[0].videogame_name}',  
+    videogame_description = '${videogameInformations[0].videogame_description}', 
+    videogame_price = '${videogameInformations[0].videogame_price}', 
+    videogame_image = '${videogameInformations[0].videogame_image}', 
+    videogame_release_date = '${videogameInformations[0].videogame_release_date}', 
+    videogame_rating = '${videogameInformations[0].videogame_rating}', 
+    videogame_quantity = '${videogameInformations[0].videogame_quantity}'
+    WHERE id = ${videogameInformations[0].videogame_id};`
   );
 }
 
