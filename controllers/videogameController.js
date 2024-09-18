@@ -1,16 +1,18 @@
 const db = require("../db/queries");
+const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
 const splitStringInArray = require("../utils/splitStringIntoArray");
 const splitCheckedOrNotGenreInArray = require("../utils/splitCheckedOrNotGenreInArray");
 
-async function getAllVideogamesGet(req, res) {
+getAllVideogamesGet = asyncHandler(async (req, res) => {
   let allVideogamesGenresPublishers =
     await db.getAllVideogamesGenresPublishers();
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
-}
+});
 
-async function getVideogameGet(req, res) {
+getVideogameGet = asyncHandler(async (req, res) => {
   let videogameGenrePublisher = await db.getVideogameGenrePublisher(
     req.params.id
   );
@@ -27,9 +29,9 @@ async function getVideogameGet(req, res) {
     videogameParams: req.params,
     videogameAllGenresId: videogameAllGenresId,
   });
-}
+});
 
-async function getUpdateVideogameGet(req, res) {
+getUpdateVideogameGet = asyncHandler(async (req, res) => {
   let allVideogameCategorie = await db.getAllVideogamesCategories();
   let videogameInformation = await db.getVideogame(req.params.id);
   let videogameGenre = splitStringInArray.splitStringIntoArray(
@@ -47,9 +49,9 @@ async function getUpdateVideogameGet(req, res) {
     videogameParams: req.params,
     videogameGenreChecked: checkedOrNotArray,
   });
-}
+});
 
-async function updateVideogamePost(req, res) {
+updateVideogamePost = asyncHandler(async (req, res) => {
   let uptadedVideogame = [
     req.body.videogameName,
     req.body.videogameDescription,
@@ -72,9 +74,9 @@ async function updateVideogamePost(req, res) {
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
-}
+});
 
-async function updateVideogameGenrePost(req) {
+updateVideogameGenrePost = asyncHandler(async (req) => {
   let allVideogamesCategoriesInformations =
     await db.getAllVideogamesCategories();
   let allVideogameCategoriesArray = [];
@@ -98,25 +100,25 @@ async function updateVideogameGenrePost(req) {
       allVideogameCategoriesArray
     );
   }
-}
+});
 
-async function updateVideogamePublisherPost(req) {
+updateVideogamePublisherPost = asyncHandler(async (req) => {
   await db.updateVideogamePublisher(
     req.body.videogamePublisher,
     req.params.videogameId
   );
-}
+});
 
-async function getDeleteVideogameGet(req, res) {
+getDeleteVideogameGet = asyncHandler(async (req, res) => {
   let videogameInformations = await db.getVideogame(req.params.id);
 
   res.render("delete_videogame", {
     videogameParams: req.params,
     videogameInformations: videogameInformations,
   });
-}
+});
 
-async function deleteVideogamePost(req, res) {
+deleteVideogamePost = asyncHandler(async (req, res) => {
   await db.deleteVideogame(req.params.id, req.params.videogameId);
 
   res.redirect("/videogame");
@@ -126,7 +128,7 @@ async function deleteVideogamePost(req, res) {
   res.render("view_all_videogames", {
     videogameInformation: allVideogamesGenresPublishers,
   });
-}
+});
 
 module.exports = {
   getAllVideogamesGet,
