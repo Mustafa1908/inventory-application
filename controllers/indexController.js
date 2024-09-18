@@ -11,6 +11,7 @@ getNewVideogameGet = asyncHandler(async (req, res) => {
     await db.getAllVideogamesCategoriesAndDescriptions();
   res.render("new_videogame", {
     videogameCategories: allVideogameCategorie,
+    formValues: "",
   });
 });
 
@@ -73,6 +74,16 @@ const validateVideogameMessage = [
 createVideoGamePost = [
   validateVideogameMessage,
   asyncHandler(async (req, res) => {
+    let newVideogame = [
+      req.body.videogameName,
+      req.body.videogameDescription,
+      req.body.videogamePrice,
+      req.body.videogameReleaseDate,
+      req.body.videogameRating,
+      req.body.videogameQuantity,
+      req.body.videogameImage,
+      req.body.videogamePublisher,
+    ];
     let allVideogameCategorie =
       await db.getAllVideogamesCategoriesAndDescriptions();
     const errors = validationResult(req);
@@ -82,18 +93,10 @@ createVideoGamePost = [
         title: "Create videogame",
         errors: errors.array(),
         videogameCategories: allVideogameCategorie,
+        formValues: newVideogame,
       });
     }
 
-    let newVideogame = [
-      req.body.videogameName,
-      req.body.videogameDescription,
-      req.body.videogamePrice,
-      req.body.videogameReleaseDate,
-      req.body.videogameRating,
-      req.body.videogameQuantity,
-      req.body.videogameImage,
-    ];
     await db.insertNewVideogame(newVideogame);
     let id = await db.getCurrentVideogameId();
     let videogameGenre = [req.body.videogameGenre, id[id.length - 1]];
