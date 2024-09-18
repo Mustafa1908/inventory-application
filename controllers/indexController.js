@@ -119,10 +119,10 @@ getNewVideogameCategorieGet = (req, res) => {
 
 const videogameCategorieMessage = "must be  between 3 and 20 characters";
 const videogameCategorieDescriptionMessage =
-  "must be  between 3 and 280 characters";
+  "must be  between 30 and 280 characters";
 const videogameCategorieImageUrlMessage = "must be a valid url";
 const videogameCategorieImageLengthMessage =
-  "must be  between 3 and 20 characters";
+  "must be  between 6 and 280 characters";
 
 const validateVideogameCategorie = [
   body("videogameCategorie")
