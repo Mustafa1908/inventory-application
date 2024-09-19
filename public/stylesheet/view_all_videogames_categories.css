@@ -1,0 +1,38 @@
+.allVideogamesCategoriesHeader {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2rem;
+  padding-top: 3rem;
+  gap: 3rem;
+  min-height: 10rem;
+}
+
+.videogameCategorieContainer {
+  position: relative;
+  text-align: center;
+}
+
+.videogameCategorieImage {
+  width: 250px;
+  height: auto;
+  border-radius: 1.3rem;
+  opacity: 0.9;
+}
+
+.videogameCategorieName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: var(--step-2);
+}
+
+@media (max-width: 579px) {
+  .allVideogamesCategoriesHeader {
+    padding-left: 1rem;
+  }
+  .videogameCategorieImage {
+    width: 180px;
+  }
+}
