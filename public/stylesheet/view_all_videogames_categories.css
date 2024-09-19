@@ -17,6 +17,11 @@
   height: auto;
   border-radius: 1.3rem;
   opacity: 0.9;
+  transition: transform 0.2s;
+}
+
+.videogameCategorieImage:hover {
+  transform: scale(1.1);
 }
 
 .videogameCategorieName {
