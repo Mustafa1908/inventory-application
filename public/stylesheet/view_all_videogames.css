@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-top: 3rem;
+  padding-left: 3rem;
+}
+
+.videogameImage {
+  width: 250px;
+  height: 100px;
+  object-fit: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  opacity: 0.9;
+  transition: transform 0.2s;
+}
+
+.videogameImage:hover {
+  transform: scale(1.1);
+}
