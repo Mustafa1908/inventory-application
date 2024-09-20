@@ -91,6 +91,37 @@
   padding-left: 1rem;
 }
 
+.videogamesHeader {
+  padding-left: 1rem;
+  padding-top: 3rem;
+  width: 87%;
+  font-size: var(--step-1);
+}
+
+.videogameCategoriesVideogamesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  width: 87%;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+}
+
+.videogameImage {
+  width: 250px;
+  height: 100px;
+  object-fit: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  opacity: 0.9;
+  transition: transform 0.2s;
+}
+
+.videogameImage:hover {
+  transform: scale(1.1);
+}
+
 @media (max-width: 460px) {
   .videogameCategorieImageContainer {
     padding-left: 1rem;
