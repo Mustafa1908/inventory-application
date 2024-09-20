@@ -20,11 +20,12 @@
     <main class="allVideogamesCategoriesMain">
       <% if (videogameCategories) {%> <% for (let i = 0; i <
       videogameCategories.length; i++) { %>
-      <a
-        href="/videogame_categorie/<%= videogameCategories[i].videogame_categorie_name %>/<%= videogameCategories[i].id %>"
-        class="openMessageLink"
-      >
-        <article class="videogameCategorieContainer">
+
+      <article class="videogameCategorieContainer">
+        <a
+          href="/videogame_categorie/<%= videogameCategories[i].videogame_categorie_name %>/<%= videogameCategories[i].id %>"
+          class="openMessageLink"
+        >
           <img
             src="<%= videogameCategories[i].videogame_categorie_image %>"
             class="videogameCategorieImage"
@@ -33,8 +34,8 @@
           <div class="videogameCategorieName">
             <%= videogameCategories[i].videogame_categorie_name %>
           </div>
-        </article>
-      </a>
+        </a>
+      </article>
       <% } %> <% } %>
     </main>
     <%- include('partials/footer'); -%>
