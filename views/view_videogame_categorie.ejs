@@ -3,35 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/view_all_videogames_categories.css" />
-    <title>Videogame Category</title>
+    <link rel="stylesheet" href="/stylesheet/view_videogame_categorie.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
+    <title><%- videogameGenreInformation[0].videogame_categorie_name -%></title>
   </head>
   <body>
-    <%- include('navbar'); -%>
-    <a href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/update">Update</a><br>
-    <a href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/delete">Delete</a>
+    <%- include('partials/navbar'); -%>
+    <main class="main">
+      <section class="videogameCategorieImageSection">
+        <figure class="videogameCategorieImageContainer">
+          <img
+            src="<%- videogameGenreInformation[0].videogame_categorie_image -%>"
+            class="videogameCategorieImage"
+            alt=""
+          />
+          <figcaption class="videogameCategorieImageTextContainer">
+            <h1 class="videogameCategorieImageHeader">
+              <%- videogameGenreInformation[0].videogame_categorie_name -%>
+            </h1>
+            <a
+              class="updateButton"
+              href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/update"
+              >Update</a
+            >
+            <a
+              class="deleteButton"
+              href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/delete"
+              >Delete</a
+            >
+          </figcaption>
+        </figure>
+        <p class="videogameCategorieDescription">
+          <%- videogameGenreInformation[0].videogame_categorie_description -%>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rerum est
+          assumenda nesciunt similique commodi, aliquam sit eum nobis adipisci
+          expedita eius unde ipsam quo laborum animi. Possimus, sequi placeat?
+        </p>
+      </section>
 
-    <div>
-      <img src="<%- videogameGenreInformation[0].videogame_categorie_image -%>" class="img" alt="">
-      <span><%- videogameGenreInformation[0].videogame_categorie_name -%> </span>
-    </div>
-    <div>
-      <span><%- videogameGenreInformation[0].videogame_categorie_description -%></span>
-    </div>
-    <div>
-      <% if (videogameGenreList) {%> <% for (let i = 0; i <
+      <section>
+        <% if (videogameGenreList) {%> <% for (let i = 0; i <
         videogameGenreList.length; i++) { %>
+        <article class="videogameContainer">
           <a
-          href="/videogame/<%= videogameGenreList[i].videogame_name %>/<%= videogameGenreList[i].id %>"
-          class="openMessageLink"
+            href="/videogame/<%= videogameGenreList[i].videogame_name %>/<%= videogameGenreList[i].id %>"
+            class="openMessageLink"
           >
-        <div class="videogameContainer">
-          <span><%= videogameGenreList[i].videogame_name %></span>
-          <img src="<%= videogameGenreList[i].videogame_image %>" class="img" alt="">
-        </div>
-        </a>
+            <span><%= videogameGenreList[i].videogame_name %></span>
+            <img
+              src="<%= videogameGenreList[i].videogame_image %>"
+              class="img"
+              alt=""
+            />
+          </a>
+        </article>
         <% } %> <% } %>
-    </div>
-    </header>
+      </section>
+    </main>
+    <%- include('partials/footer'); -%>
   </body>
 </html>
