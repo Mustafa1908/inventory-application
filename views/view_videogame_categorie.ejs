@@ -44,9 +44,10 @@
           assumenda nesciunt similique commodi, aliquam sit eum nobis adipisci
           expedita eius unde ipsam quo laborum animi. Possimus, sequi placeat?
         </p>
+        <h2 class="videogamesHeader">Videogames</h2>
       </section>
 
-      <section>
+      <section class="videogameCategoriesVideogamesContainer">
         <% if (videogameGenreList) {%> <% for (let i = 0; i <
         videogameGenreList.length; i++) { %>
         <article class="videogameContainer">
@@ -54,10 +55,9 @@
             href="/videogame/<%= videogameGenreList[i].videogame_name %>/<%= videogameGenreList[i].id %>"
             class="openMessageLink"
           >
-            <span><%= videogameGenreList[i].videogame_name %></span>
             <img
               src="<%= videogameGenreList[i].videogame_image %>"
-              class="img"
+              class="videogameImage"
               alt=""
             />
           </a>
