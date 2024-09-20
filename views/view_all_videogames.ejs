@@ -3,28 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/view_all_videogame.css" />
+    <link rel="stylesheet" href="/stylesheet/view_all_videogames.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
     <title>Videogames</title>
   </head>
   <body>
-    <%- include('navbar'); -%>
-    <p>here are the videogames:</p>
-    <header class="header">
+    <%- include('partials/navbar'); -%>
+    <main class="main">
       <% if (videogameInformation) {%> <% for (let i = 0; i <
       videogameInformation.length; i++) { %>
-      <a
-        href="/videogame/<%= videogameInformation[i].videogame_name %>/<%= videogameInformation[i].id %>"
-        class="openMessageLink"
-        ><%= videogameInformation[i].videogame_name %>
-        <div class="videogameContainer">
+      <article>
+        <a
+          href="/videogame/<%= videogameInformation[i].videogame_name %>/<%= videogameInformation[i].id %>"
+          class="openMessageLink"
+        >
           <img
+            class="videogameImage"
             src="<%= videogameInformation[i].videogame_image %>"
             class="img"
             alt=""
           />
-        </div>
-      </a>
+        </a>
+      </article>
       <% } %> <% } %>
-    </header>
+    </main>
+    <%- include('partials/footer'); -%>
   </body>
 </html>
