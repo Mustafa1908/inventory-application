@@ -17,14 +17,14 @@
   </head>
   <body>
     <%- include('partials/navbar'); -%>
-    <header class="allVideogamesCategoriesHeader">
+    <main class="allVideogamesCategoriesMain">
       <% if (videogameCategories) {%> <% for (let i = 0; i <
       videogameCategories.length; i++) { %>
       <a
         href="/videogame_categorie/<%= videogameCategories[i].videogame_categorie_name %>/<%= videogameCategories[i].id %>"
         class="openMessageLink"
       >
-        <div class="videogameCategorieContainer">
+        <article class="videogameCategorieContainer">
           <img
             src="<%= videogameCategories[i].videogame_categorie_image %>"
             class="videogameCategorieImage"
@@ -33,10 +33,10 @@
           <div class="videogameCategorieName">
             <%= videogameCategories[i].videogame_categorie_name %>
           </div>
-        </div>
+        </article>
       </a>
       <% } %> <% } %>
-    </header>
+    </main>
     <%- include('partials/footer'); -%>
   </body>
 </html>
