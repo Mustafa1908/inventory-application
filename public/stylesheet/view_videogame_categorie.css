@@ -1,0 +1,98 @@
+:root {
+  --step--2: clamp(0.7813rem, 0.7776rem + 0.0181vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9255rem + 0.0602vw, 1rem);
+  --step-0: clamp(1.125rem, 1.1009rem + 0.1205vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.309rem + 0.2048vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5558rem + 0.3211vw, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 98%;
+}
+
+.videogameCategorieImageSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 100%;
+  padding-top: 1rem;
+}
+
+.videogameCategorieImageContainer {
+  max-width: 100%;
+}
+
+.videogameCategorieImage {
+  width: 85vw;
+  height: 500px;
+  border-radius: 2rem;
+  object-fit: auto;
+  object-fit: cover;
+}
+
+.videogameCategorieImageTextContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+.videogameCategorieImageHeader {
+  font-size: var(--step-2);
+}
+
+.updateButton {
+  font-size: var(--step-1);
+  text-decoration: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  color: #fff;
+  border-radius: 2rem;
+  padding: 0.6rem;
+}
+
+.updateButton:hover {
+  opacity: 0.9;
+}
+
+.deleteButton {
+  font-size: var(--step-1);
+  text-decoration: none;
+  background-color: #e62222;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  color: #fff;
+  border-radius: 2rem;
+  padding: 0.6rem;
+}
+
+.deleteButton:hover {
+  opacity: 0.8;
+}
+
+.videogameCategorieDescriptionContainer {
+  width: 87%;
+}
+
+.videogameCategorieDescription {
+  font-size: var(--step--1);
+  word-break: wrap;
+  width: 87%;
+  padding-left: 1rem;
+}
+
+@media (max-width: 460px) {
+  .videogameCategorieImageContainer {
+    padding-left: 1rem;
+  }
+}
