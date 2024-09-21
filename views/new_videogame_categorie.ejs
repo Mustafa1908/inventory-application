@@ -3,12 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheet/new_videogame_categorie.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
     <title>New Videogame Category</title>
   </head>
   <body>
-    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %> <%
+    <%- include('partials/navbar'); -%> <%- include('partials/errors.ejs') %> <%
     if(formValues) { %>
     <form action="/create_videogame_categorie" method="POST">
+      <h1 class="formHeader">Create New Videogame Categorie</h1>
       <label for="videogameCategorie">Videogame Categorie: </label>
       <input
         type="text"
@@ -27,7 +35,6 @@
         value="<%= formValues[1] %>"
         required
       />
-      <br />
       <label for="videogameCategorieImage"
         >Videogame Categorie Image(url):
       </label>
@@ -38,10 +45,11 @@
         value="<%= formValues[2] %>"
         required
       />
-      <button type="submit">Submit</button>
+      <button class="submitButton" type="submit">Submit</button>
     </form>
     <% } else {%>
-    <form action="/create_videogame_categorie" method="POST">
+    <form action="/create_videogame_categorie" class="form" method="POST">
+      <h1 class="formHeader">Create New Videogame Categorie</h1>
       <label for="videogameCategorie">Videogame Categorie: </label>
       <input
         type="text"
@@ -52,13 +60,12 @@
       <label for="videogameCategorieDescription"
         >Videogame Categorie Description:
       </label>
-      <input
+      <textarea
         type="text"
         name="videogameCategorieDescription"
         id="videogameCategorieDescription"
         required
-      />
-      <br />
+      ></textarea>
       <label for="videogameCategorieImage"
         >Videogame Categorie Image(url):
       </label>
@@ -68,8 +75,8 @@
         id="videogameCategorieImage"
         required
       />
-      <button type="submit">Submit</button>
+      <button class="submitButton" type="submit">Submit</button>
     </form>
-    <% } %>
+    <% } %> <%- include('partials/footer'); -%>
   </body>
 </html>
