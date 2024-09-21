@@ -1,0 +1,130 @@
+:root {
+  --step--2: clamp(0.7813rem, 0.7776rem + 0.0181vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9255rem + 0.0602vw, 1rem);
+  --step-0: clamp(1.125rem, 1.1009rem + 0.1205vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.309rem + 0.2048vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5558rem + 0.3211vw, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+}
+
+.main {
+  display: flex;
+  gap: 2rem;
+  padding-left: 3rem;
+}
+
+.videogameImage {
+  width: 45vw;
+  height: 1100px;
+  border-radius: 2rem;
+  object-fit: auto;
+  object-fit: cover;
+}
+
+.videogameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 3rem;
+}
+
+.updateButton {
+  font-size: var(--step-1);
+  text-decoration: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  color: #fff;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin-left: 0.5rem;
+}
+
+.updateButton:hover {
+  opacity: 0.9;
+}
+
+.deleteButton {
+  font-size: var(--step-1);
+  text-decoration: none;
+  background-color: #e62222;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  color: #fff;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.videogameName {
+  font-size: var(--step-3);
+  max-width: 90%;
+  word-break: break-word;
+  padding-left: 1rem;
+}
+
+.videogameDescription {
+  font-size: var(--step--1);
+  max-width: 90%;
+  word-break: break-word;
+  padding-left: 1rem;
+}
+
+.genreContainer {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.deleteButton:hover {
+  opacity: 0.8;
+}
+
+.videogameGenre {
+  font-size: var(--step-1);
+  text-decoration: none;
+  background-color: #cffafe;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  color: #22d3ee;
+  border-radius: 2rem;
+  font-size: var(--step--2);
+  padding: 0.6rem;
+  margin-left: 0.5rem;
+}
+
+.videogamePrice {
+  font-size: var(--step-3);
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+.videogameInformationsContainer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  gap: 0.8rem;
+}
+
+.videogamePublisher {
+  max-width: 90%;
+  word-break: break-word;
+}
+
+@media (max-width: 1095px) {
+  .main {
+    flex-wrap: wrap;
+    width: 100vw;
+    padding-left: 0rem;
+  }
+
+  .videogameImageFigure {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .videogameImage {
+    width: 96%;
+    height: 900px;
+    padding-top: 1rem;
+  }
+}
