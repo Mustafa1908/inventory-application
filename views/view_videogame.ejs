@@ -3,49 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/view_videogame.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheet/view_videogames.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
+    <title><%= videogameInformation[0].videogame_name %></title>
   </head>
   <body>
-    <%- include('navbar'); -%>
-    <p>videogame</p>
-    <a
-      href="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/update"
-      >Update</a
-    >
-    <br />
-    <a
-      href="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/delete"
-      >Delete</a
-    >
-    <% if (videogameInformation) {%>
-    <div class="videogameContainer">
-      <div>
-        <% for (let i = 0; i <
-        videogameInformation[0].videoGameGenreArray.length; i++) { %>
-        <div class="videogameContainer">
+    <%- include('partials/navbar'); -%>
+    <main class="main">
+      <% if (videogameInformation) {%>
+      <figure class="videogameImageFigure">
+        <img
+          src="<%= videogameInformation[0].videogame_image %>"
+          class="videogameImage"
+          alt=""
+        />
+      </figure>
+      <section class="videogameContainer">
+        <div class="modifyVideogameContainer">
           <a
+            class="updateButton"
+            href="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/update"
+            >Update</a
+          >
+          <a
+            class="deleteButton"
+            href="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/delete"
+            >Delete</a
+          >
+        </div>
+        <h1 class="videogameName">
+          <%= videogameInformation[0].videogame_name %>
+        </h1>
+        <p class="videogameDescription">
+          <%= videogameInformation[0].videogame_description %>
+        </p>
+        <div class="genreContainer">
+          <% for (let i = 0; i <
+          videogameInformation[0].videoGameGenreArray.length; i++) { %>
+          <a
+            class="videogameGenre"
             href="/videogame_categorie/<%= videogameInformation[0].videoGameGenreArray[i] %>/<%= videogameAllGenresId[i][0].id %>"
             ><%= videogameInformation[0].videoGameGenreArray[i] %></a
           >
+          <% } %>
         </div>
-        <% } %>
-      </div>
-      <img
-        src="<%= videogameInformation[0].videogame_image %>"
-        class="img"
-        alt=""
-      /><br />
-      <span><%= videogameInformation[0].videogame_name %></span>
-      <span><%= videogameInformation[0].videogame_description %></span>
-      <span><%= videogameInformation[0].publisher %></span>
-      <span><%= videogameInformation[0].videogame_price %></span>
-      <span><%= videogameInformation[0].videogame_release_date %></span>
-      <span><%= videogameInformation[0].videogame_rating %></span>
-      <p>
-        Video game quantity: <%= videogameInformation[0].videogame_quantity %>
-      </p>
-    </div>
-    <% } %>
+        <span class="videogamePrice"
+          >$<%= videogameInformation[0].videogame_price %></span
+        >
+        <div class="videogameInformationsContainer">
+          <span
+            ><strong>Rating:</strong> <%=
+            videogameInformation[0].videogame_rating %>/5</span
+          >
+          <span class="videogamePublisher"
+            ><strong>Publisher:</strong> <%= videogameInformation[0].publisher
+            %></span
+          >
+          <span
+            ><strong>Release Date:</strong> <%=
+            videogameInformation[0].videogame_release_date %></span
+          >
+          <span>
+            <em>Videogames left in stock:</em> <%=
+            videogameInformation[0].videogame_quantity %>
+          </span>
+        </div>
+      </section>
+      <% } %>
+    </main>
+    <%- include('partials/footer'); -%>
   </body>
 </html>
