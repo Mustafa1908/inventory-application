@@ -13,10 +13,10 @@
     <title>New Videogame Category</title>
   </head>
   <body>
-    <%- include('partials/navbar'); -%> <%- include('partials/errors.ejs') %> <%
-    if(formValues) { %>
+    <%- include('partials/navbar'); -%> <% if(formValues) { %>
     <form action="/create_videogame_categorie" method="POST">
       <h1 class="formHeader">Create New Videogame Categorie</h1>
+      <%- include('partials/errors.ejs') %>
       <label for="videogameCategorie">Videogame Categorie: </label>
       <input
         type="text"
@@ -28,13 +28,14 @@
       <label for="videogameCategorieDescription"
         >Videogame Categorie Description:
       </label>
-      <input
+      <textarea
         type="text"
         name="videogameCategorieDescription"
         id="videogameCategorieDescription"
-        value="<%= formValues[1] %>"
         required
-      />
+      >
+<%= formValues[1] %></textarea
+      >
       <label for="videogameCategorieImage"
         >Videogame Categorie Image(url):
       </label>
@@ -50,6 +51,7 @@
     <% } else {%>
     <form action="/create_videogame_categorie" class="form" method="POST">
       <h1 class="formHeader">Create New Videogame Categorie</h1>
+      <%- include('partials/errors.ejs') %>
       <label for="videogameCategorie">Videogame Categorie: </label>
       <input
         type="text"
