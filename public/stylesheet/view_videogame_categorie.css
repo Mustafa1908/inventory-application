@@ -84,17 +84,21 @@
   width: 87%;
 }
 
+.videogameCategorieDescriptionHeaderContainer {
+  width: 84vw;
+}
+
 .videogameCategorieDescription {
   font-size: var(--step--1);
-  word-break: wrap;
-  width: 87%;
+  word-break: break-word;
+  width: 70%;
   padding-left: 1rem;
 }
 
 .videogamesHeader {
   padding-left: 1rem;
   padding-top: 3rem;
-  width: 87%;
+  width: 100%;
   font-size: var(--step-1);
 }
 
