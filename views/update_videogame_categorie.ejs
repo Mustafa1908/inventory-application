@@ -4,13 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Videogame Category</title>
+    <link rel="stylesheet" href="/stylesheet/new_videogame_categorie.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
   </head>
   <body>
-    <%- include('navbar'); -%> <%- include('partials/errors.ejs') %>
+    <%- include('partials/navbar'); -%>
     <form
       action="/videogame_categorie/<%= videogameCategorieParams.id %>/<%= videogameCategorieParams.videogameCategorieId %>/update"
       method="POST"
     >
+      <%- include('partials/errors.ejs') %>
+      <h1 class="formHeader">Update Videogame Categorie</h1>
       <label for="videogameCategorie">Videogame Categorie Name: </label>
       <input
         type="text"
@@ -21,12 +30,13 @@
       <label for="videogameCategorieDescription"
         >Videogame Categorie Description:
       </label>
-      <input
+      <textarea
         type="text"
         name="videogameCategorieDescription"
         id="videogameCategorieDescription"
-        value="<%= videogameGenreInformation[0].videogame_categorie_description %>"
-      />
+      >
+<%= videogameGenreInformation[0].videogame_categorie_description %></textarea
+      >
       <label for="videogameCategorieImage"
         >Videogame Categorie Image(url):
       </label>
@@ -36,7 +46,8 @@
         id="videogameCategorieImage"
         value="<%= videogameGenreInformation[0].videogame_categorie_image %>"
       />
-      <button type="submit">Submit</button>
+      <button class="submitButton" type="submit">Submit</button>
     </form>
+    <%- include('partials/footer'); -%>
   </body>
 </html>
