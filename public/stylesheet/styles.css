@@ -98,12 +98,16 @@ body {
   height: 9rem;
   padding-left: 1rem;
   padding-top: 2rem;
-  padding-bottom: 8rem;
-  margin-bottom: 0.5rem;
 }
 
 .footerHeader {
   font-size: var(--step-1);
+}
+
+@media (max-width: 803px) {
+  footer {
+    padding-bottom: 3rem;
+  }
 }
 
 @media (min-width: 827px) {
