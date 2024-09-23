@@ -17,10 +17,14 @@
 
 body {
   font-family: "Courier New", Courier, monospace;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #7dd3fc;
+  background-image: url("https://wallpapercave.com/wp/wp10325396.png");
+  background-repeat: no-repeat;
+  background-size: cover auto;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 .nav {
@@ -50,13 +54,13 @@ body {
 .navbarAnchor {
   display: none;
   text-decoration: none;
-  color: #0c0a09;
+  color: white;
   font-size: var(--step--1);
   border: 3px solid transparent;
 }
 
 .navbarAnchor:hover {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid white;
 }
 
 .secondaryNav {
@@ -98,10 +102,15 @@ body {
   height: 9rem;
   padding-left: 1rem;
   padding-top: 2rem;
+  color: white;
 }
 
 .footerHeader {
   font-size: var(--step-1);
+}
+
+footer a {
+  color: purple;
 }
 
 @media (max-width: 803px) {
