@@ -108,6 +108,7 @@ getDeleteVideogameCategorieGet = asyncHandler(async (req, res) => {
   res.render("delete_videogame_categorie", {
     videogameCategorieParams: req.params,
     videogameCategorieLength: videogameSpecificGenre.length,
+    videogameInformation: videogameSpecificGenre,
   });
 });
 
