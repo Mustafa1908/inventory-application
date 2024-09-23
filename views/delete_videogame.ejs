@@ -3,16 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Delete Videogame</title>
+    <link rel="stylesheet" href="/stylesheet/delete_videogame.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
   </head>
   <body>
-    <p>Are you sure you wanna delete this videogame?</p>
-    <p><%= videogameInformations[0].videogame_name %></p>
-    <form
-      action="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/delete"
-      method="POST"
-    >
-      <button type="submit">Submti</button>
-    </form>
+    <%- include('partials/navbar'); -%>
+    <section class="section">
+      <h1 class="deleteVideogameMainHeader">
+        Are you sure you wanna delete this videogame?
+      </h1>
+      <img
+        class="videogameImage"
+        src="<%= videogameInformations[0].videogame_image %>"
+        alt=""
+      />
+      <h2 class="deleteVideogameSecondHeader">
+        <%= videogameInformations[0].videogame_name %>
+      </h2>
+      <form
+        action="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/delete"
+        method="POST"
+      >
+        <button class="deleteButton" type="submit">Delete videogame</button>
+      </form>
+    </section>
+    <%- include('partials/footer'); -%>
   </body>
 </html>
