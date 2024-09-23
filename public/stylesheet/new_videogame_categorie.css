@@ -28,6 +28,7 @@ form {
 .formHeader {
   font-size: var(--step-1);
   text-align: center;
+  padding-top: 1rem;
 }
 
 label {
