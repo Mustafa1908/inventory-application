@@ -17,7 +17,7 @@
 
 body {
   font-family: "Courier New", Courier, monospace;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-image: url("https://wallpapercave.com/wp/wp10325396.png");
@@ -107,10 +107,6 @@ body {
 
 .footerHeader {
   font-size: var(--step-1);
-}
-
-footer a {
-  color: purple;
 }
 
 @media (max-width: 803px) {
