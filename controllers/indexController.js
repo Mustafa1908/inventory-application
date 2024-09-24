@@ -5,7 +5,13 @@ const { body, validationResult } = require("express-validator");
 getHomePageGet = asyncHandler(async (req, res) => {
   let allVideogamesCategories =
     await db.getAllVideogamesCategoriesAndDescriptions();
-  res.render("index", { videogameCategories: allVideogamesCategories });
+  let allVideogamesGenresPublishers =
+    await db.getAllVideogamesGenresPublishers();
+
+  res.render("index", {
+    videogameCategories: allVideogamesCategories,
+    videogames: allVideogamesGenresPublishers,
+  });
 });
 
 getNewVideogameGet = asyncHandler(async (req, res) => {
