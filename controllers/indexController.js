@@ -2,9 +2,11 @@ const db = require("../db/queries");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
-getHomePageGet = (req, res) => {
-  res.render("index");
-};
+getHomePageGet = asyncHandler(async (req, res) => {
+  let allVideogamesCategories =
+    await db.getAllVideogamesCategoriesAndDescriptions();
+  res.render("index", { videogameCategories: allVideogamesCategories });
+});
 
 getNewVideogameGet = asyncHandler(async (req, res) => {
   let allVideogameCategorie =
