@@ -1,0 +1,75 @@
+:root {
+  --step--2: clamp(0.7813rem, 0.7776rem + 0.0181vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9255rem + 0.0602vw, 1rem);
+  --step-0: clamp(1.125rem, 1.1009rem + 0.1205vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.309rem + 0.2048vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5558rem + 0.3211vw, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 93.5vh;
+  background-image: url("https://steamuserimages-a.akamaihd.net/ugc/1661224712069230981/BFD6A13BBBF6F1A2A7FA6A6DA961E0700E98660A/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.indexHeader {
+  font-size: var(--step-4);
+  color: white;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.indexText {
+  font-size: var(--step-0);
+  color: white;
+  max-width: 40%;
+  text-align: center;
+}
+
+.viewVideogamesCategoriesButton {
+  background-color: #e2e8f0;
+  color: black;
+  border: none;
+  margin-top: 2rem;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  min-height: 2.5rem;
+  font-size: var(--step--1);
+}
+
+.viewVideogamesCategoriesButton:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+@media (max-width: 606px) {
+  .indexHeader {
+    font-size: var(--step-2);
+  }
+
+  .indexText {
+    font-size: var(--step--1);
+    max-width: 90%;
+    border: 3px solid red;
+  }
+}
+
+@media (min-width: 607px) and (max-width: 1138px) {
+  .indexHeader {
+    font-size: var(--step-3);
+  }
+
+  .indexText {
+    font-size: var(--step--1);
+    max-width: 60%;
+  }
+}
