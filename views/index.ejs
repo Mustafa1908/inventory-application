@@ -25,6 +25,32 @@
         >View categories</a
       >
     </header>
+    <section class="section">
+      <h2 class="sectionHeader">Videogames Categories</h2>
+      <header class="secondHeader">
+        <% if (videogameCategories) {%> <% for (let i = 0; i < 4; i++) { %>
+
+        <article class="videogameCategorieContainer">
+          <a
+            href="/videogame_categorie/<%= videogameCategories[i].videogame_categorie_name %>/<%= videogameCategories[i].id %>"
+            class="openMessageLink"
+          >
+            <img
+              src="<%= videogameCategories[i].videogame_categorie_image %>"
+              class="videogameCategorieImage"
+              alt=""
+            />
+            <div class="videogameCategorieName">
+              <span
+                ><%= videogameCategories[i].videogame_categorie_name %>
+              </span>
+            </div>
+          </a>
+        </article>
+        <% } %> <% } %>
+      </header>
+    </section>
+    <header class="thirdHeader"></header>
     <%- include('partials/footer');-%>
   </body>
 </html>
