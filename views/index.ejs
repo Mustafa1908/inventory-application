@@ -3,10 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Videogame Inventory</title>
+    <title>Videogame Inventory Homepage</title>
+    <link rel="stylesheet" href="/stylesheet/index.css" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://i.redd.it/kx0kf5u4lon41.png"
+    />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
   </head>
   <body>
-    <%- include('navbar'); -%>
-    <p>hey how are you doing</p>
+    <%- include('partials/navbar'); -%>
+    <header class="header">
+      <h1 class="indexHeader">Videogames Inventory</h1>
+      <span class="indexText"
+        >Step into a game vault where every title is neatly organized by
+        categories, ready for you to explore and conquer!</span
+      >
+      <a href="/videogame_categorie" class="viewVideogamesCategoriesButton"
+        >View categories</a
+      >
+    </header>
+    <%- include('partials/footer');-%>
   </body>
 </html>
