@@ -116,7 +116,7 @@ updateVideogamePost = [
         videogame_description: req.body.videogameDescription,
         videogame_price: req.body.videogamePrice,
         videogame_image: req.body.videogameImage,
-        videogamea_release_date: req.body.videogameReleaseDate,
+        videogame_release_date: req.body.videogameReleaseDate,
         videogame_rating: req.body.videogameRating,
         videogame_quantity: req.body.videogameQuantity,
         publisher: req.body.videogamePublisher,
