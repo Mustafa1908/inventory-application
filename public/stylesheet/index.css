@@ -51,7 +51,99 @@
   opacity: 0.9;
 }
 
-@media (max-width: 606px) {
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 10rem;
+  background-image: url("https://steamuserimages-a.akamaihd.net/ugc/2438013375536940927/D370DBF7BFC83ED36F783F08A598FFF3E71A1D61/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false");
+  min-height: 103.5vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sectionHeader {
+  color: white;
+  font-size: var(--step-3);
+  width: 50%;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.secondHeader {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2rem;
+  padding-top: 3rem;
+  gap: 3rem;
+  min-height: 10rem;
+  max-width: 60%;
+}
+
+.videogameCategorieContainer {
+  position: relative;
+  text-align: center;
+}
+
+.videogameCategorieImage {
+  width: 250px;
+  height: auto;
+  border-radius: 1.3rem;
+  opacity: 0.9;
+  transition: transform 0.2s;
+}
+
+.videogameCategorieImage:hover {
+  transform: scale(1.1);
+}
+
+.videogameCategorieName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -45%);
+  color: white;
+  font-size: var(--step-2);
+}
+
+.thirdHeader {
+  background-image: url("https://i.redd.it/fisnfas5ip7c1.gif");
+  min-height: 113.5vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 435px) {
+  .indexText {
+    max-width: 95%;
+    font-size: var(--step--1);
+  }
+
+  .section {
+    align-items: center;
+    padding-left: 0rem;
+  }
+
+  .sectionHeader {
+    width: 100%;
+    font-size: var(--step-1);
+  }
+
+  .secondHeader {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  .videogameCategorieImage {
+    width: 180px;
+  }
+}
+
+@media (min-width: 436px) and (max-width: 606px) {
   .indexHeader {
     font-size: var(--step-2);
   }
@@ -59,7 +151,28 @@
   .indexText {
     font-size: var(--step--1);
     max-width: 90%;
-    border: 3px solid red;
+  }
+
+  .section {
+    align-items: center;
+    padding-left: 0rem;
+  }
+
+  .sectionHeader {
+    width: 100%;
+  }
+
+  .secondHeader {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .videogameCategorieImage {
+    width: 180px;
   }
 }
 
@@ -71,5 +184,23 @@
   .indexText {
     font-size: var(--step--1);
     max-width: 60%;
+  }
+
+  .section {
+    justify-content: center;
+    align-items: center;
+    padding-left: 0rem;
+  }
+
+  .sectionHeader {
+    width: 70%;
+  }
+
+  .secondHeader {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
   }
 }
