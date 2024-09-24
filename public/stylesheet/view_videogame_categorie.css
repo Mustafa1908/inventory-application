@@ -7,6 +7,7 @@
   --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
   --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
   --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+  --white: #fff;
 }
 
 .main {
@@ -57,7 +58,7 @@
   text-decoration: none;
   background-color: #2ea44f;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  color: #fff;
+  color: var(--white);
   border-radius: 2rem;
   padding: 0.6rem;
 }
@@ -71,7 +72,7 @@
   text-decoration: none;
   background-color: #e62222;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  color: #fff;
+  color: var(--white);
   border-radius: 2rem;
   padding: 0.6rem;
 }

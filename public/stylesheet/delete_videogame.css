@@ -7,6 +7,7 @@
   --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
   --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
   --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+  --white: white;
 }
 
 .section {
@@ -19,7 +20,7 @@
 }
 
 .deleteVideogameMainHeader {
-  color: white;
+  color: var(--white);
   text-align: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -41,7 +42,7 @@
 }
 
 .deleteVideogameSecondHeader {
-  color: white;
+  color: var(--white);
   text-align: center;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -50,7 +51,7 @@
 
 .deleteButton {
   background-color: #c70000;
-  color: #fff;
+  color: var(--white);
   border: none;
   margin-top: 2rem;
   width: 100%;

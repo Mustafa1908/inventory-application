@@ -7,6 +7,7 @@
   --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
   --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
   --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+  --light-grey: #e8eeef;
 }
 
 form {
@@ -42,7 +43,7 @@ label {
 }
 
 input {
-  background-color: #e8eeef;
+  background-color: var(--light-grey);
   border: none;
   padding: 1rem;
   width: 100%;
@@ -51,7 +52,7 @@ input {
 }
 
 #videogameDescription {
-  background-color: #e8eeef;
+  background-color: var(--light-grey);
   border: none;
   width: 100%;
   border-radius: 1rem;

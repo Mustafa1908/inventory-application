@@ -13,6 +13,7 @@
   --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
   --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
   --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+  --white: white;
 }
 
 body {
@@ -54,13 +55,13 @@ body {
 .navbarAnchor {
   display: none;
   text-decoration: none;
-  color: white;
+  color: var(--white);
   font-size: var(--step--1);
   border: 3px solid transparent;
 }
 
 .navbarAnchor:hover {
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid var(--white);
 }
 
 .secondaryNav {
