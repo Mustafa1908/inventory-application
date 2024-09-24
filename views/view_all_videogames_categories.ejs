@@ -20,11 +20,9 @@
     <main class="allVideogamesCategoriesMain">
       <% if (videogameCategories) {%> <% for (let i = 0; i <
       videogameCategories.length; i++) { %>
-
       <article class="videogameCategorieContainer">
         <a
           href="/videogame_categorie/<%= videogameCategories[i].videogame_categorie_name %>/<%= videogameCategories[i].id %>"
-          class="openMessageLink"
         >
           <img
             src="<%= videogameCategories[i].videogame_categorie_image %>"
