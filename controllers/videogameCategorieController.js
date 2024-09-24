@@ -36,7 +36,7 @@ getUpdateVideogameCategorieGet = asyncHandler(async (req, res) => {
   });
 });
 
-//Create form error messages
+//Create form errors messages
 
 const videogameCategorieMessage = "must be  between 3 and 20 characters";
 const videogameCategorieDescriptionMessage =
