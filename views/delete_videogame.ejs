@@ -29,7 +29,11 @@
       <form
         action="/videogame/<%= videogameParams.id %>/<%= videogameParams.videogameId %>/delete"
         method="POST"
+        class="form"
       >
+        <%- include('partials/errors'); -%>
+        <label for="password">Password(The password is 30): </label>
+        <input type="password" name="password" id="password" />
         <button class="deleteButton" type="submit">Delete videogame</button>
       </form>
     </section>
