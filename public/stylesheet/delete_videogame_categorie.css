@@ -57,6 +57,41 @@
   color: white;
 }
 
+.form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  background: #f4f7f8;
+  max-width: 35rem;
+  min-height: 10rem;
+  padding-top: 1rem;
+  padding: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-top: 3rem;
+  border-radius: 1rem;
+}
+
+label {
+  text-align: left;
+  width: 90%;
+  padding-top: 2rem;
+  padding-left: 0.4rem;
+  padding-bottom: 0.3rem;
+  font-size: var(--step--2);
+}
+
+input {
+  background-color: #e8eeef;
+  border: none;
+  padding: 1rem;
+  width: 90%;
+  border-radius: 1rem;
+}
+
 .deleteButton {
   background-color: #c70000;
   color: #fff;
@@ -72,6 +107,44 @@
 .deleteButton:hover {
   cursor: pointer;
   opacity: 0.9;
+}
+
+@media (max-width: 434px) {
+  .deleteMainHeader {
+    font-size: var(--step-1);
+  }
+
+  form {
+    width: 90%;
+  }
+
+  input,
+  label {
+    width: 69vw;
+    font-size: var(--step--2);
+  }
+
+  .deleteButton {
+    width: 69vw;
+    font-size: var(--step--1);
+  }
+}
+
+@media (min-width: 435px) and (max-width: 584px) {
+  form {
+    max-width: 40%;
+  }
+
+  input,
+  label {
+    width: 59vw;
+    font-size: var(--step--1);
+  }
+
+  .deleteButton {
+    width: 59vw;
+    font-size: var(--step--0);
+  }
 }
 
 @media (min-width: 438px) and (max-width: 595px) {
