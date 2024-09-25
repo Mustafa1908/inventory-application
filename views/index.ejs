@@ -28,7 +28,10 @@
     <section class="section">
       <h2 class="sectionHeader">Featured Categories</h2>
       <header class="secondHeader">
-        <% if (videogameCategories) {%> <% for (let i = 0; i < 4; i++) { %>
+        <% if (videogameCategories) {%> <% let videogameCategorieLength %> <% if
+        (videogameCategories.length <= 4) { videogameCategorieLength =
+        videogameCategories.length } else{ %> <% videogameCategorieLength = 4 }
+        %> <% for (let i = 0; i < videogameCategorieLength; i++) { %>
 
         <article class="videogameCategorieContainer">
           <a
@@ -52,7 +55,10 @@
     <section class="secondSection">
       <h2 class="secondSectionHeader">Featured Videogames</h2>
       <header class="thirdHeader">
-        <% if (videogames) {%> <% for (let i = 0; i < 2; i++) { %>
+        <% if (videogames) {%> <% let videogameLength %> <% if
+        (videogames.length <= 2) { videogameLength = videogames.length } else{
+        %> <% videogameLength = 2 } %> <% for (let i = 0; i < videogameLength;
+        i++) { %>
         <article>
           <a
             href="/videogame/<%= videogames[i].videogame_name %>/<%= videogames[i].id %>"
