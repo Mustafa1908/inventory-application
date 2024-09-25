@@ -63,6 +63,7 @@ const videogameDateErrorMessage = "must be a valid date";
 const videogameImageUrlErrorMessage = "must be a valid url";
 const videogameImageLengthErrorMessage = "must be  between 3 and 20 characters";
 const videogameGenreErrorMessage = "must be checked";
+const passwordErrorMessage = "must be 30";
 
 const validateVideogameMessage = [
   body("videogameName")
@@ -105,6 +106,7 @@ const validateVideogameMessage = [
     .trim()
     .isLength({ min: 1 })
     .withMessage(`At least one videogame genre ${videogameGenreErrorMessage}`),
+  body("password").equals("30").withMessage(`Password ${passwordErrorMessage}`),
 ];
 
 updateVideogamePost = [
@@ -159,6 +161,9 @@ updateVideogameGenrePost = asyncHandler(async (req) => {
   let allVideogamesCategoriesInformations =
     await db.getAllVideogamesCategories();
   let allVideogameCategoriesArray = [];
+
+  const errors = validationResult(req);
+
   //Create allVideogamesCategoriesArray
   for (let i = 0; i < allVideogamesCategoriesInformations.length; i++) {
     allVideogameCategoriesArray.push(
@@ -197,17 +202,39 @@ getDeleteVideogameGet = asyncHandler(async (req, res) => {
   });
 });
 
-deleteVideogamePost = asyncHandler(async (req, res) => {
-  await db.deleteVideogame(req.params.id, req.params.videogameId);
+//Create error messages for updateVideogameGenrePost
 
-  res.redirect("/videogame");
+const validateDeleteVideogame = [
+  body("password").equals("30").withMessage(`Password ${passwordErrorMessage}`),
+];
 
-  let allVideogamesGenresPublishers =
-    await db.getAllVideogamesGenresPublishers();
-  res.render("view_all_videogames", {
-    videogameInformation: allVideogamesGenresPublishers,
-  });
-});
+deleteVideogamePost = [
+  validateDeleteVideogame,
+  asyncHandler(async (req, res) => {
+    let videogameInformations = await db.getVideogame(req.params.id);
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("delete_videogame", {
+        title: "Delete videogame",
+        errors: errors.array(),
+        videogameParams: req.params,
+        videogameInformations: videogameInformations,
+      });
+    }
+
+    await db.deleteVideogame(req.params.id, req.params.videogameId);
+
+    res.redirect("/videogame");
+
+    let allVideogamesGenresPublishers =
+      await db.getAllVideogamesGenresPublishers();
+    res.render("view_all_videogames", {
+      videogameInformation: allVideogamesGenresPublishers,
+    });
+  }),
+];
 
 module.exports = {
   getAllVideogamesGet,
