@@ -115,32 +115,32 @@ input {
 
 @media (max-width: 434px) {
   form {
-    width: 80%;
+    width: 90%;
   }
 
   .formHeader {
     font-size: var(--step--1);
-    width: 65vw;
+    width: 70vw;
   }
 
   input,
   label {
-    width: 65vw;
+    width: 70vw;
     font-size: var(--step--2);
   }
 
   #videogameDescription {
-    width: 65vw;
+    width: 70vw;
   }
 
   .submitButton {
-    width: 65vw;
+    width: 70vw;
     min-height: 3rem;
   }
 }
 
 @media (min-width: 435px) and (max-width: 584px) {
   form {
-    max-width: 90%;
+    max-width: 95%;
   }
 }

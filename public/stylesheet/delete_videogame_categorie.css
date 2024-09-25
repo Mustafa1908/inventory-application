@@ -79,7 +79,7 @@ label {
   text-align: left;
   width: 90%;
   padding-top: 2rem;
-  padding-left: 0.4rem;
+  margin-left: 0.8rem;
   padding-bottom: 0.3rem;
   font-size: var(--step--2);
 }
