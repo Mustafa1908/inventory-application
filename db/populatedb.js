@@ -1,12 +1,15 @@
 const { Client } = require("pg");
 
 const SQL = `
+
 CREATE TABLE IF NOT EXISTS videogame_categorie (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   videogame_categorie_name VARCHAR ( 20 ),
   videogame_categorie_description VARCHAR (300),
   videogame_categorie_image VARCHAR (300)
 );
+
+
 
 INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) 
 VALUES
@@ -22,6 +25,99 @@ VALUES
   ('Roguelike', 'A roguelike is a subgenre of role-playing games characterized by procedural generation, turn-based gameplay, and permanent death. Players navigate randomly generated dungeons, battling enemies and collecting items. Each playthrough is unique, emphasizing strategy and adaptability.', 'https://images6.alphacoders.com/130/1302421.jpg'),
   ('Horror', 'The horror video game genre focuses on creating fear and tension through unsettling atmospheres, eerie narratives, and often survival elements. Players typically face threats from monsters or psychological challenges, enhancing suspense. Notable examples include Resident Evil and Silent Hill', 'https://wallpapers.com/images/hd/horror-games-3500-x-1989-wallpaper-ufqhjqgcbib6vdr1.jpg'), 
   ('Sandbox' , 'The sandbox video game genre allows players to explore and interact with an open world freely, emphasizing creativity and self-directed gameplay. Players can build, modify, or destroy environments without strict objectives. Popular examples include Minecraft, Garrys Mod, and Grand Theft Auto V.', 'https://i.pinimg.com/originals/dc/f7/02/dcf702bb86bc528c1944d567cdfed464.jpg');
+
+
+
+
+
+
+  CREATE TABLE IF NOT EXISTS videogame (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  videogame_name VARCHAR ( 80 ),
+  videogame_description VARCHAR ( 300 ),
+  videogame_price INTEGER,
+  videogame_release_date VARCHAR ( 30 ),
+  videogame_rating INTEGER,
+  videogame_quantity INTEGER,
+  videogame_image VARCHAR ( 280 )
+);
+
+
+CREATE TABLE IF NOT EXISTS videogame_genre (
+  id INTEGER ,
+  videogame_categorie_name VARCHAR ( 40 )
+);
+
+CREATE TABLE IF NOT EXISTS videogame_publisher (
+  id INTEGER ,
+  publisher VARCHAR ( 120 )
+);
+
+
+
+
+INSERT INTO videogame (videogame_name,  videogame_description, videogame_price, videogame_release_date, videogame_rating, videogame_quantity, videogame_image) 
+VALUES
+  ('Hollow Knight', 'Hollow Knight  is a critically acclaimed action-adventure game developed by Team Cherry. Set in the haunting hand-drawn world of Hallownest, players control a silent knight as they explore, battle enemies, and uncover the lore of a fallen kingdom. The game features challenging combat and platforming', 14.99, '2017/24/02', 5, 14572  ,'https://images2.alphacoders.com/125/1253971.jpg'),
+  ('Dead Cells', 'Dead Cells is a roguelite, metroidvania inspired, action-platformer. You will explore a sprawling, ever-changing castle assuming you are able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.', 24.99, '2018/06/08', 4, 7856 ,'https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_DeadCells.jpg'),
+  ('Yakuza: Like a Dragon', 'Yakuza: Like a Dragon (Yakuza 7) is a turn-based RPG in the Yakuza series, featuring Ichiban Kasuga, who seeks to uncover the truth behind his betrayal. Set in Yokohama, it blends dramatic storytelling with quirky side activities, including job classes and mini-games.', 19.99, '2020/10/11', 4, 6789 ,'https://www.gamespot.com/a/uploads/screen_kubrick/1574/15747411/3755649-yakuza--like-a-dragon-review-promothumb.jpg'),
+  ('Call of Duty: Black Ops III', 'Call of Duty: Black Ops III is a first-person shooter set in a dystopian future. It features a robust campaign with a co-op mode, focusing on a new threat involving advanced technology. The game also offers a fast-paced multiplayer experience and the popular Zombies mode.', 59.99, '2015/06/11', 5, 14982, 'https://images2.alphacoders.com/597/597965.jpg'),
+  ('League of Legends', 'League of Legends is a popular moba  game where players control unique champions and compete in teams to destroy the enemys Nexus. With various roles like ADC, support, and jungler, strategic teamwork and individual skill are crucial. Regular updates keep the game engaging.', 0, '2009/27/10', 4, '92832', 'https://wallpapers.com/images/hd/4k-gaming-phone-league-of-legends-akali-iuob433pfedj8p01.jpg'),
+  ('World of Warcraft', 'Word Warcraft delves into the epic universe of fantasy and conflict, where powerful factions vie for dominance. In this world, words wield immense power spells and incantations can alter reality, summon creatures, or unleash devastating attacks.', 12.99, '2004/23/11', 5, 43234, 'https://images3.alphacoders.com/159/159225.jpg' ),
+  ('The Legend of Zelda: Tears of the Kingdom', 'The Legend of Zelda: Tears of the Kingdom" (TOTK) follows Link as he explores a vast, open-world Hyrule. With new abilities like building and sky exploration, players uncover secrets and battle enemies. The game invite players to solve puzzles and save the kingdom in fresh ways!', 51.49, '2023/12/05', 5, 58423, 'https://images7.alphacoders.com/131/1314891.jpg'),
+  ('Soma', 'SOMA is a sci-fi horror game that explores consciousness and identity in an underwater research facility. Players control Simon who navigates a nightmarish world filled with monstrous beings and philosophical questions about what it means to be human. The  storytelling  create a haunting experience.', 29.99, '2015/21/09', 5, 2345, 'https://images4.alphacoders.com/643/643092.jpg'),
+  ('Minecraft', 'Minecraft is a sandbox game that lets players build, explore, and survive in a blocky, procedurally generated world. Players can gather resources, craft items, and create structures or entire cities. With modes like Survival and Creative, it offers endless possibilities for creativity with friends.', 14.49, '2011/18/11', 5, 4234, 'https://wallpapers.com/images/featured/minecraft-hd-f0k9haimutvt21n8.jpg'),
+  ('The Elder Scrolls V: Skyrim', 'Skyrim, part of The Elder Scrolls series, is an open-world RPG set in the fantasy realm of Tamriel. Players assume the role of the Dragonborn, tasked with defeating dragons and fulfilling prophecies. With rich lore, vast landscapes, and countless quests, it offers  immersive storytelling.', 39.99, '2011/11/11', 5, 8734, 'https://wallpapers.com/images/hd/the-elder-scrolls-v-skyrim-1920-x-1080-background-qo2pff6ukijkkkcw.jpg'),
+  ('Nier:Automata', 'Nier: Automata is an action RPG set in a post-apocalyptic Earth, featuring androids 2B, 9S, and A2 battling alien machines. With fast-paced combat and a rich narrative exploring themes of existence and consciousness, it offers multiple endings that deepen the experience.', 39.99, '2017/23/02', 5, 89913, 'https://i.pinimg.com/originals/59/61/ab/5961ab356c150082452c066b490b1b3d.jpg'),
+  ('Undertale', 'Undertale is a unique RPG where players navigate the Underground, a realm filled with monsters. Choices matter players can choose to fight, flee, or befriend enemies, influencing the story and ending. With its charming characters, retro graphics, and innovative gameplay', 9.99, '2015/15/09', 5, 6989, 'https://images7.alphacoders.com/798/798682.png');
+
+
+
+  INSERT INTO videogame_genre (id, videogame_categorie_name)
+  VALUES
+  (1, 'Metroidvania'),
+  (2, 'Metroidvania'),
+  (2, 'Roguelike'),
+  (3, 'Action'),
+  (3, 'Adventure'),
+  (3, 'Jrpg'),
+  (4, 'FPS'),
+  (4, 'Action'),
+  (5, 'Moba'),
+  (5, 'Action'),
+  (5, 'RPG'),
+  (6, 'MMORPG'),
+  (7, 'Action'),
+  (7, 'Adventure'),
+  (7, 'Puzzle'),
+  (8, 'Horror'),
+  (9, 'Sandbox'),
+  (9, 'Action'),
+  (9, 'Adventure'),
+  (10, 'Action'),
+  (10, 'RPG'),
+  (10, 'Adventure'),
+  (11, 'Action'),
+  (11, 'RPG'),
+  (11, 'Adventure'),
+  (12, 'Adventure'),
+  (12, 'Action');
+
+
+  INSERT INTO videogame_publisher (id, publisher)
+  VALUES
+  (1, 'Team Cherry'),
+  (2, 'Motion Twin'),
+  (3, 'Sega'),
+  (4, 'Treyarch'),
+  (5, 'Riot Games'),
+  (6, 'Blizzard ENtertainment'),
+  (7, 'Nintendo'),
+  (8, 'Frictional Games'),
+  (9, 'Mojang'),
+  (10, 'Bethesda Game Studios'),
+  (11, 'Square Enix'),
+  (12, 'Toby Fox');
 `;
 
 async function main() {
