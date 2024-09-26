@@ -4,8 +4,8 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS videogame_categorie (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   videogame_categorie_name VARCHAR ( 20 ),
-  videogame_categorie_description VARCHAR (280),
-  videogame_categorie_image VARCHAR (280)
+  videogame_categorie_description VARCHAR (300),
+  videogame_categorie_image VARCHAR (300)
 );
 
 INSERT INTO videogame_categorie (videogame_categorie_name, videogame_categorie_description, videogame_categorie_image) 

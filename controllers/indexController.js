@@ -126,10 +126,10 @@ getNewVideogameCategorieGet = (req, res) => {
 
 const videogameCategorieMessage = "must be  between 3 and 20 characters";
 const videogameCategorieDescriptionMessage =
-  "must be  between 30 and 280 characters";
+  "must be  between 30 and 300 characters";
 const videogameCategorieImageUrlMessage = "must be a valid url";
 const videogameCategorieImageLengthMessage =
-  "must be  between 6 and 280 characters";
+  "must be  between 6 and 300 characters";
 
 const validateVideogameCategorie = [
   body("videogameCategorie")
@@ -138,7 +138,7 @@ const validateVideogameCategorie = [
     .withMessage(`Videogame categorie name ${videogameCategorieMessage}`),
   body("videogameCategorieDescription")
     .trim()
-    .isLength({ min: 30, max: 280 })
+    .isLength({ min: 30, max: 300 })
     .withMessage(
       `Videogame categorie description ${videogameCategorieDescriptionMessage}`
     ),
@@ -148,7 +148,7 @@ const validateVideogameCategorie = [
     .withMessage(
       `Videogame categorie image ${videogameCategorieImageUrlMessage}`
     )
-    .isLength({ min: 6, max: 280 })
+    .isLength({ min: 6, max: 300 })
     .withMessage(
       `Videogame categorie image ${videogameCategorieImageLengthMessage}`
     ),
