@@ -45,12 +45,19 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 3rem;
-  padding-left: 1rem;
   padding-top: 0.5rem;
+  width: 84.7vw;
 }
 
 .videogameCategorieImageHeader {
   font-size: var(--step-2);
+  padding-left: 1rem;
+}
+
+.modifyVideogameCategorieContainer {
+  display: flex;
+  gap: 1.4rem;
+  padding-left: 0.5rem;
 }
 
 .updateButton {
@@ -61,6 +68,8 @@
   color: var(--white);
   border-radius: 2rem;
   padding: 0.6rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .updateButton:hover {
@@ -75,6 +84,8 @@
   color: var(--white);
   border-radius: 2rem;
   padding: 0.6rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .deleteButton:hover {
@@ -92,7 +103,7 @@
 .videogameCategorieDescription {
   font-size: var(--step--1);
   word-break: break-word;
-  width: 70%;
+  width: 98%;
   padding-left: 1rem;
 }
 
@@ -125,10 +136,4 @@
 
 .videogameImage:hover {
   transform: scale(1.1);
-}
-
-@media (max-width: 460px) {
-  .videogameCategorieImageContainer {
-    padding-left: 1rem;
-  }
 }
