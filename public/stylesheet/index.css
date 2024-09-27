@@ -100,13 +100,17 @@
   transform: scale(1.1);
 }
 
-.videogameCategorieName {
+.videogameCategorieNameContainer {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-60%, -45%);
+  transform: translate(-50%, -50%);
   color: var(--white);
   font-size: var(--step-2);
+}
+
+.videogameCategorieName {
+  font-size: var(--step-1);
 }
 
 .secondSection {
@@ -174,7 +178,15 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding-right: 0.2rem;
   }
+
+  .thirdHeader {
+    justify-content: center;
+    align-items: center;
+    padding-left: 0rem;
+  }
+
   .videogameCategorieImage {
     width: 180px;
   }
@@ -185,7 +197,7 @@
   }
 
   .videogameImage {
-    width: 250px;
+    width: 280px;
   }
 }
 
@@ -217,8 +229,24 @@
     gap: 2rem;
   }
 
+  .thirdHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0rem;
+    border: 3px solid red;
+  }
+
   .videogameCategorieImage {
     width: 180px;
+  }
+
+  .secondSectionHeader {
+    width: 100%;
+  }
+
+  .videogameImage {
+    width: 380px;
   }
 }
 
@@ -231,8 +259,9 @@
     justify-content: center;
     align-items: center;
   }
+
   .videogameImage {
-    width: 320px;
+    width: 380px;
   }
 }
 
@@ -262,5 +291,12 @@
     margin-left: auto;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (min-width: 878px) and (max-width: 1178px) {
+  .secondHeader {
+    justify-content: flex-start;
+    padding-left: 1rem;
   }
 }
