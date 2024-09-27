@@ -26,16 +26,18 @@
             <h1 class="videogameCategorieImageHeader">
               <%- videogameGenreInformation[0].videogame_categorie_name -%>
             </h1>
-            <a
-              class="updateButton"
-              href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/update"
-              >Update</a
-            >
-            <a
-              class="deleteButton"
-              href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/delete"
-              >Delete</a
-            >
+            <div class="modifyVideogameCategorieContainer">
+              <a
+                class="updateButton"
+                href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/update"
+                >Update</a
+              >
+              <a
+                class="deleteButton"
+                href="/videogame_categorie/<%- videogameCategorieParams.id -%>/<%- videogameCategorieParams.videogameCategorieId -%>/delete"
+                >Delete</a
+              >
+            </div>
           </figcaption>
         </figure>
         <div class="videogameCategorieDescriptionHeaderContainer">
