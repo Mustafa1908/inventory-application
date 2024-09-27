@@ -1,7 +1,7 @@
 .allVideogamesCategoriesMain {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  padding-left: 2rem;
   padding-top: 3rem;
   gap: 3rem;
   min-height: 10rem;
@@ -39,5 +39,12 @@
   }
   .videogameCategorieImage {
     width: 180px;
+  }
+}
+
+@media (min-width: 846px) {
+  .allVideogamesCategoriesMain {
+    padding-left: 2rem;
+    padding-right: 1rem;
   }
 }
