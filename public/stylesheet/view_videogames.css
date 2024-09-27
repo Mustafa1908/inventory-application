@@ -119,13 +119,18 @@
 
   .videogameImageFigure {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    padding-left: 0.5rem;
   }
 
   .videogameImage {
-    width: 96%;
-    height: 900px;
+    width: 99%;
+    height: 500px;
+    padding-top: 1rem;
+  }
+
+  .videogameContainer {
     padding-top: 1rem;
   }
 }
