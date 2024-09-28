@@ -17,6 +17,6 @@ app.use("/videogame", videogameRouter);
 app.use("/videogame_categorie", videogameCategorieRouter);
 
 const PORT = process.env.PORT || 8080;
-app.listen(process.env.PORT, () =>
+app.listen(PORT, "0.0.0.0", () =>
   console.log(`Express app listening on port ${PORT}!`)
 );
