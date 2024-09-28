@@ -1,6 +1,6 @@
 <h1>Videogames Inventory</h1>
 A videogame inventory website where you can see the differents videogames, videogames categories, and you can do all CRUD Methods.(Create, Read, Update, Delete)
-</br></br><b><a href="https://shopping-cart-nu-orpin.vercel.app" target="_blank">Live Preview</a></b>
+</br></br><b><a href="https://inventory-application-production-4691.up.railway.app/" target="_blank">Live Preview</a></b>
 </br></br><img src="https://github.com/user-attachments/assets/af00743a-454c-462b-9e17-bc0d10b5e85c">
 <h2>Features</h2>
 <ul>
