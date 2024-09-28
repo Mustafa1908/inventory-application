@@ -1,12 +1,13 @@
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 3rem;
   padding-top: 3rem;
   padding-right: 1rem;
   padding-left: 3rem;
+  border: 3px solid red;
 }
 
 .videogameImage {
@@ -40,5 +41,11 @@
   }
   .videogameImage {
     width: 180px;
+  }
+}
+
+@media (max-width: 915px) {
+  .main {
+    justify-content: center;
   }
 }
