@@ -42,24 +42,12 @@ getUpdateVideogameGet = asyncHandler(async (req, res) => {
     await splitCheckedOrNotGenreInArray.splitCheckedOrNotGenreInArray(
       req.params.id
     );
-  let videogameDate = [];
-
-  videogameDate.push(
-    videogameInformation[0].videogame_release_date.slice(0, 4),
-    "-",
-    videogameInformation[0].videogame_release_date.slice(8, 10),
-    "-",
-    videogameInformation[0].videogame_release_date.slice(5, 7)
-  );
-
-  videogameDate = videogameDate.join("");
 
   res.render("update_videogame", {
     videogameCategories: allVideogameCategorie,
     videogameInformation: videogameInformation,
     videogameParams: req.params,
     videogameGenreChecked: checkedOrNotArray,
-    videogameDate: videogameDate,
   });
 });
 
