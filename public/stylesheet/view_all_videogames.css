@@ -25,7 +25,7 @@
 
 @media (max-width: 423px) {
   .main {
-    padding-left: 0rem;
+    padding-left: 0.3rem;
     padding-right: 0rem;
   }
   .videogameImage {
@@ -44,7 +44,4 @@
 }
 
 @media (max-width: 915px) {
-  .main {
-    justify-content: center;
-  }
 }

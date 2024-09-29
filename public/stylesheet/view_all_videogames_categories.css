@@ -1,9 +1,21 @@
+:root {
+  --step--2: clamp(0.7813rem, 0.7776rem + 0.0181vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9255rem + 0.0602vw, 1rem);
+  --step-0: clamp(1.125rem, 1.1009rem + 0.1205vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.309rem + 0.2048vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5558rem + 0.3211vw, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.8481rem + 0.4794vw, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.1942rem + 0.693vw, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.6036rem + 0.9786vw, 3.8147rem);
+}
+
 .allVideogamesCategoriesMain {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding-top: 3rem;
   gap: 3rem;
+  padding-left: 1rem;
   min-height: 10rem;
 }
 
@@ -33,9 +45,29 @@
   font-size: var(--step-2);
 }
 
-@media (max-width: 579px) {
-  .allVideogamesCategoriesHeader {
+@media (min-width: 320px) and (max-width: 423px) {
+  .allVideogamesCategoriesMain {
+    justify-content: center;
+  }
+
+  .videogameCategorieName {
     padding-left: 1rem;
+    font-size: var(--step-1);
+  }
+
+  .videogameCategorieImage {
+    width: 220px;
+  }
+}
+
+@media (min-width: 424px) and (max-width: 893px) {
+  .allVideogamesCategoriesMain {
+    justify-content: flex-start;
+  }
+
+  .videogameCategorieName {
+    padding-left: 1rem;
+    font-size: var(--step-1);
   }
   .videogameCategorieImage {
     width: 180px;
