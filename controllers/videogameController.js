@@ -52,27 +52,29 @@ getUpdateVideogameGet = asyncHandler(async (req, res) => {
 });
 
 //Create new videogame form error messages
-const videogameNameMessageErrorMessage = "must be  between 1 and 80 characters";
+const videogameNameMessageErrorMessage =
+  "must be  between 1 and 130 characters";
 const videogameDescriptionErrorMessage =
-  "must be  between 30 and 300 characters";
+  "must be  between 30 and 1000 characters";
 const videogamePublisherErrorMessage = "must be  between 3 and 120 characters";
 const videogamePriceErrorMessage = "must be a number";
 const videogameQuantityErrorMessage = "must be an integer(5, 7, 10, 13, ...)";
 const videogameRatingErrorMessage = "must be a number";
 const videogameDateErrorMessage = "must be a valid date";
 const videogameImageUrlErrorMessage = "must be a valid url";
-const videogameImageLengthErrorMessage = "must be  between 3 and 20 characters";
+const videogameImageLengthErrorMessage =
+  "must be  between 6 and 500 characters";
 const videogameGenreErrorMessage = "must be checked";
 const passwordErrorMessage = "must be 30";
 
 const validateVideogameMessage = [
   body("videogameName")
     .trim()
-    .isLength({ min: 1, max: 80 })
+    .isLength({ min: 1, max: 130 })
     .withMessage(`Videogame  name ${videogameNameMessageErrorMessage}`),
   body("videogameDescription")
     .trim()
-    .isLength({ min: 30, max: 300 })
+    .isLength({ min: 30, max: 1000 })
     .withMessage(`Videogame  Description ${videogameDescriptionErrorMessage}`),
   body("videogamePublisher")
     .trim()
@@ -98,7 +100,7 @@ const validateVideogameMessage = [
     .trim()
     .isURL()
     .withMessage(`Videogame categorie image ${videogameImageUrlErrorMessage}`)
-    .isLength({ min: 6, max: 280 })
+    .isLength({ min: 6, max: 500 })
     .withMessage(
       `Videogame categorie image ${videogameImageLengthErrorMessage}`
     ),
