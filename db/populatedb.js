@@ -6,8 +6,8 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS videogame_categorie (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   videogame_categorie_name VARCHAR ( 20 ),
-  videogame_categorie_description VARCHAR (300),
-  videogame_categorie_image VARCHAR (300)
+  videogame_categorie_description VARCHAR (1000),
+  videogame_categorie_image VARCHAR (500)
 );
 
 
@@ -34,13 +34,13 @@ VALUES
 
   CREATE TABLE IF NOT EXISTS videogame (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  videogame_name VARCHAR ( 80 ),
-  videogame_description VARCHAR ( 300 ),
+  videogame_name VARCHAR ( 130 ),
+  videogame_description VARCHAR ( 1000 ),
   videogame_price INTEGER,
   videogame_release_date VARCHAR ( 30 ),
   videogame_rating INTEGER,
   videogame_quantity INTEGER,
-  videogame_image VARCHAR ( 280 )
+  videogame_image VARCHAR ( 500 )
 );
 
 
