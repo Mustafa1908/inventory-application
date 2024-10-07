@@ -19,3 +19,5 @@ A videogame inventory website where you can see the differents videogames, video
 </ul>
 <h2>More Projects</h2>
 <p>Here is a link to my previous project: <a href="https://github.com/Mustafa1908/shopping-cart">Shopping Cart</a></p>
+<p>Here is a link to my next project: <a href="https://github.com/Mustafa1908/members-only">Members-Only</a></p>
+
